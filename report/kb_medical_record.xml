@@ -15,7 +15,7 @@
 								<div class="col-2"/>
 								<div class="col-4" style="text-align: right;">
 									<p>
-										Reg. No: <span t-field="o.name"/>
+										Reg. No: <span t-field="o.reg_no"/>
 									</p>
 								</div>
 							</div>
@@ -62,6 +62,10 @@
 										<tr>
 											<td>Date of Birth</td>
 											<td>: <span t-field="o.date_of_birth"/></td>
+										</tr>
+										<tr>
+											<td>Age</td>
+											<td>: <span t-field="o.age"/></td>
 										</tr>
 										<tr>
 											<td>Gender</td>

@@ -15,10 +15,10 @@
 
 		<record id="medical_record_test_2" model="kb.medical.record">
 			<field name="name">Felicia Sherryl</field>
-			<field name="address">Lapangan Bola STU, Jl. Tauladan No.2 14, Tanah Abang, Jakarta Pusat</field>
+			<field name="address">Kolfe, Addis Ababa</field>
 			<field name="mobile">0834 4822 7156</field>
 			<field name="date_of_birth">2001-08-29</field>
-			<field name="id_number">346 021 290801 0003</field>
+			<field name="id_number">NTS-123</field>
 			<field name="gender">female</field>
 			<field name="religion">christian</field>
 			<field name="occupation">General Manager</field>
