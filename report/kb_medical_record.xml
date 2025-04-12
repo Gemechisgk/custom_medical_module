@@ -10,13 +10,13 @@
 									<img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" class="img-fluid"/>
 									<div style="text-align: center;">
 										<div style="font-size: 1.25em"><strong t-out="o.company_id.name.upper()"/></div>
-										<div style="font-size: 1.25em"><strong>REKAM MEDIS</strong></div>
+										<div style="font-size: 1.25em"><strong>MEDICAL RECORD</strong></div>
 									</div>
 								</div>
 								<div class="col-2"/>
 								<div class="col-4" style="text-align: right;">
 									<p>
-										No. Reg: <span t-field="o.name"/>
+										Reg. No: <span t-field="o.name"/>
 									</p>
 								</div>
 							</div>
@@ -27,19 +27,23 @@
 								<div class="col-6">
 									<table>
 										<tr>
-											<td>Nama Lengkap</td>
+											<td>Full Name</td>
 											<td>: <span t-field="o.name"/></td>
 										</tr>
 										<tr>
-											<td>Alamat</td>
+											<td>ID</td>
+											<td>: <span t-field="o.citizenship_number"/></td>
+										</tr>
+										<tr>
+											<td>Address</td>
 											<td>: <span t-field="o.address"/></td>
 										</tr>
 										<tr>
-											<td>Telp. / HP</td>
+											<td>Phone / Mobile</td>
 											<td>: <span t-field="o.mobile"/></td>
 										</tr>
 										<tr>
-											<td>Riwayat Alergi</td>
+											<td>Allergy History</td>
 											<td>: 
 												<t t-set="allergy_list" t-value="[]"/>
 												<t t-foreach="o.allergy_ids" t-as="line">
@@ -49,31 +53,27 @@
 											</td>
 										</tr>
 										<tr>
-											<td>Riwayat Penyakit</td>
+											<td>Medical History</td>
 											<td>: <span t-field="o.medical_history"/></td>
-										</tr>
-										<tr>
-											<td>NIK</td>
-											<td>: <span t-field="o.citizenship_number"/></td>
 										</tr>
 									</table>
 								</div>
 								<div class="col-6">
 									<table>
 										<tr>
-											<td>Tgl Lahir</td>
+											<td>Date of Birth</td>
 											<td>: <span t-field="o.date_of_birth"/></td>
 										</tr>
 										<tr>
-											<td>Jenis Kelamin</td>
+											<td>Gender</td>
 											<td>: <span t-field="o.gender"/></td>
 										</tr>
 										<tr>
-											<td>Agama</td>
+											<td>Religion</td>
 											<td>: <span t-field="o.religion"/></td>
 										</tr>
 										<tr>
-											<td>Pekerjaan</td>
+											<td>Occupation</td>
 											<td>: <span t-field="o.occupation"/></td>
 										</tr>
 									</table>
@@ -84,12 +84,12 @@
 									<t t-set="number" t-value="1"/>
 									<table class="table" style="border-spacing: 0;">
 										<tr>
-											<th style="border: 1px solid black; font-weight: bold;">NO.</th>
-											<th style="border: 1px solid black; font-weight: bold;">TGL</th>
-											<th style="border: 1px solid black; font-weight: bold;">ANAMNESIS / PEMERIKSAAN</th>
-											<th style="border: 1px solid black; font-weight: bold;">DIAGNOSIS</th>
-											<th style="border: 1px solid black; font-weight: bold;">TERAPI</th>
-											<th style="border: 1px solid black; font-weight: bold;">PARAF / NAMA</th>
+											<th style="border: 1px solid black; font-weight: bold;">No.</th>
+											<th style="border: 1px solid black; font-weight: bold;">Date</th>
+											<th style="border: 1px solid black; font-weight: bold;">Anamnesis / Examination</th>
+											<th style="border: 1px solid black; font-weight: bold;">Diagnosis</th>
+											<th style="border: 1px solid black; font-weight: bold;">Therapy</th>
+											<th style="border: 1px solid black; font-weight: bold;">Initials / Name</th>
 										</tr>
 										<tr t-foreach="o.history_ids" t-as="history">
 											<td style="border: 1px solid black;">
@@ -98,11 +98,11 @@
 											</td>
 											<td style="border: 1px solid black;">
 												<div class="mb-2">
-													<b>Evaluasi:</b><br/>
+													<b>Evaluation:</b><br/>
 													<span t-field="history.test_result"/>
 												</div>
 												<div class="mb-2">
-													<b>Keluhan Utama:</b><br/>
+													<b>Main Complaint:</b><br/>
 													<span t-field="history.complaints"/>
 												</div>
 											</td>
@@ -112,7 +112,7 @@
 													<span t-field="history.diagnosis"/>
 												</div>
 												<div class="mb-2">
-													<b>Saran Medis:</b><br/>
+													<b>Medical Advice:</b><br/>
 													<span t-field="history.medical_advice"/>
 												</div>
 											</td>
@@ -122,36 +122,36 @@
 													<span t-field="history.diagnosis"/>
 												</div>
 												<div class="mb-2">
-													<b>Saran Medis:</b><br/>
+													<b>Medical Advice:</b><br/>
 													<span t-field="history.medical_advice"/>
 												</div>
 											</td>
 											<td style="border: 1px solid black;">
 												<div class="mb-2">
-													<b>Prosedur:</b><br/>
+													<b>Procedure:</b><br/>
 													<t t-foreach="history.procedure_ids" t-as="line">
 														<div><span t-field="line.name"/> / <span t-field="line.create_date"/></div>
 													</t>
 												</div>
 												<div class="mb-2">
-													<b>Obat:</b><br/>
+													<b>Medication:</b><br/>
 													<span t-field="history.drug_prescribed"/>
 												</div>
 												<div class="mb-2">
-													<b>Vaksinasi:</b><br/>
+													<b>Vaccination:</b><br/>
 													<t t-foreach="history.vaccination_ids" t-as="line">
 														<div><span t-field="line.vaccine"/> / <span t-field="line.create_date"/></div>
 													</t>
 												</div>
 												<div class="mb-2">
-													<b>Perlakuan:</b><br/>
+													<b>Treatment:</b><br/>
 													<t t-foreach="history.treatment_ids" t-as="line">
 														<div><span t-field="line.name"/> / <span t-field="line.create_date"/></div>
 														<div class="ms-1" t-field="line.treatment"/>
 													</t>
 												</div>
 												<div class="mb-2">
-													<b>Test Lab:</b><br/>
+													<b>Lab Test:</b><br/>
 													<span t-field="history.lab_tested"/>
 												</div>
 											</td>
@@ -172,8 +172,8 @@
             <field name="name">Medical Record</field>
             <field name="model">kb.medical.record</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">kb_medical_record.medical_record_template</field>
-            <field name="report_file">kb_medical_record.medical_record_template</field>
+            <field name="report_name">custom_medical_module.medical_record_template</field>
+            <field name="report_file">custom_medical_module.medical_record_template</field>
             <field name="binding_model_id" ref="model_kb_medical_record"/>
             <field name="binding_type">report</field>
         </record>

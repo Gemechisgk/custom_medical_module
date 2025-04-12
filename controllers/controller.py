@@ -52,7 +52,7 @@ class MedicalRecordPostmanAPI(Controller):
 			})
 
 		if kw.get('return', False) == 'pdf':
-			pdf, _ = request.env['ir.actions.report'].sudo()._render_qweb_pdf('kb_medical_record.medical_record_report', res_ids=[record_id])
+			pdf, _ = request.env['ir.actions.report'].sudo()._render_qweb_pdf('custom_medical_module.medical_record_report', res_ids=[record_id])
 			pdf_http_headers = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
 			return request.make_response(pdf, headers=pdf_http_headers)
 		else: # Return JSON
