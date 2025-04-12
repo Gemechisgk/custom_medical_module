@@ -9,7 +9,6 @@
 								<div class="col-6">
 									<img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" class="img-fluid"/>
 									<div style="text-align: center;">
-										<div style="font-size: 1.25em"><strong t-out="o.company_id.name.upper()"/></div>
 										<div style="font-size: 1.25em"><strong>MEDICAL RECORD</strong></div>
 									</div>
 								</div>
@@ -32,7 +31,7 @@
 										</tr>
 										<tr>
 											<td>ID</td>
-											<td>: <span t-field="o.citizenship_number"/></td>
+											<td>: <span t-field="o.id_number"/></td>
 										</tr>
 										<tr>
 											<td>Address</td>

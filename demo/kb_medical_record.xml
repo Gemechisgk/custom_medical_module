@@ -5,7 +5,7 @@
 			<field name="address">Kality, Addis Ababa</field>
 			<field name="mobile">0943 225 005</field>
 			<field name="date_of_birth">2000-02-14</field>
-			<field name="citizenship_number">312 022 140200 0001</field>
+			<field name="id_number">312 022 140200 0001</field>
 			<field name="gender">male</field>
 			<field name="religion">islam</field>
 			<field name="occupation">Salesperson</field>
@@ -18,7 +18,7 @@
 			<field name="address">Lapangan Bola STU, Jl. Tauladan No.2 14, Tanah Abang, Jakarta Pusat</field>
 			<field name="mobile">0834 4822 7156</field>
 			<field name="date_of_birth">2001-08-29</field>
-			<field name="citizenship_number">346 021 290801 0003</field>
+			<field name="id_number">346 021 290801 0003</field>
 			<field name="gender">female</field>
 			<field name="religion">christian</field>
 			<field name="occupation">General Manager</field>

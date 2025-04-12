@@ -22,7 +22,7 @@ class MedicalRecordPostmanAPI(Controller):
 
 	def _generate_medical_record_json(self, record_id):
 		# Definitions for keys and o2m relations
-		medical_record_keys = ['id', 'company_id', 'name', 'address', 'mobile', 'date_of_birth', 'citizenship_number', 'gender', 'religion', 'occupation', 'history_ids', 'history_count', 'allergy_ids', 'medical_history']
+		medical_record_keys = ['id', 'company_id', 'name', 'address', 'mobile', 'date_of_birth', 'id_number', 'gender', 'religion', 'occupation', 'history_ids', 'history_count', 'allergy_ids', 'medical_history']
 		medical_history_keys = ['id', 'user_id', 'name', 'date', 'test_result', 'complaints', 'diagnosis', 'medical_advice', 'procedure_ids', 'drug_prescribed', 'vaccination_ids', 'treatment_ids', 'lab_tested']
 		procedure_keys =  ['id', 'name', 'procedure']
 		vaccination_keys =  ['id', 'name', 'vaccine']

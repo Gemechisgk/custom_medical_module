@@ -6,11 +6,12 @@ class MedicalRecord(models.Model):
 	_order = "name desc"
 
 	company_id = fields.Many2one("res.company", ondelete="restrict", default=lambda self: self.env.company)
+	employee_id = fields.Many2one("hr.employee", string=_("Employee"), ondelete="restrict")  # New field
 	name = fields.Char(string=_("Patient"), required=True)
 	address = fields.Char(string=_("Address"))
 	mobile = fields.Char(string=_("Mobile Number"), required=True)
 	date_of_birth = fields.Date(string=_("Birth Date"), required=True)
-	citizenship_number = fields.Char(string=_("NIK"))
+	id_number = fields.Char(string=_("ID Number"), required=True)
 	gender = fields.Selection([
 		('male', _('Male')),
 		('female', _('Female'))
@@ -33,6 +34,17 @@ class MedicalRecord(models.Model):
 	def _calculate_history_count(self):
 		for record in self:
 			record.history_count = len(record.history_ids)
+
+	@api.onchange('employee_id')
+	def _onchange_employee_id(self):
+		"""Auto-fill fields based on the selected employee."""
+		if self.employee_id:
+			self.name = self.employee_id.name
+			self.address = self.employee_id.address_id.street if self.employee_id.address_id else ''
+			self.mobile = self.employee_id.mobile_phone or self.employee_id.work_phone or ''
+			self.date_of_birth = self.employee_id.birthday
+			self.gender = 'male' if self.employee_id.gender == 'male' else 'female'
+			self.occupation = self.employee_id.job_id.name if self.employee_id.job_id else ''
 
 	def view_medical_histories(self):
 		for record in self:
