@@ -1,0 +1,51 @@
+<odoo>
+	<data>
+		<record id="allergy_antibiotic" model="kb.medical.allergy">
+			<field name="name">Antibiotic</field>
+		</record>
+
+		<record id="allergy_aspirin" model="kb.medical.allergy">
+			<field name="name">Aspirin</field>
+		</record>
+
+		<record id="allergy_ibuprofen" model="kb.medical.allergy">
+			<field name="name">Ibuprofen</field>
+		</record>
+
+		<record id="allergy_naproxen" model="kb.medical.allergy">
+			<field name="name">Naproxen</field>
+		</record>
+
+		<record id="allergy_codeine" model="kb.medical.allergy">
+			<field name="name">Codeine</field>
+		</record>
+
+		<record id="allergy_chlorpromazine" model="kb.medical.allergy">
+			<field name="name">Chlorpromazine</field>
+		</record>
+
+		<record id="allergy_ethosuximide" model="kb.medical.allergy">
+			<field name="name">Ethosuximide</field>
+		</record>
+
+		<record id="allergy_lamotrigine" model="kb.medical.allergy">
+			<field name="name">Lamotrigine</field>
+		</record>
+
+		<record id="allergy_phenytoin" model="kb.medical.allergy">
+			<field name="name">Phenytoin</field>
+		</record>
+
+		<record id="allergy_contrast_dye" model="kb.medical.allergy">
+			<field name="name">Contrast Dye</field>
+		</record>
+
+		<record id="allergy_chemo_drug" model="kb.medical.allergy">
+			<field name="name">Chemotherapy Drugs</field>
+		</record>
+
+		<record id="allergy_anesthetic" model="kb.medical.allergy">
+			<field name="name">Anesthetic</field>
+		</record>
+	</data>
+</odoo>

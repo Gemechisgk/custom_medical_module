@@ -1,0 +1,81 @@
+<odoo>
+	<data>
+		<record id="medical_history_procedure_tree" model="ir.ui.view">
+			<field name="name">medical_history_procedure_tree</field>
+			<field name="model">kb.medical.history.procedure</field>
+			<field name="arch" type="xml">
+				<list>
+					<field name="create_date"/>
+					<field name="name"/>
+					<field name="procedure"/>
+				</list>
+			</field>
+		</record>
+
+		<record id="medical_history_procedure_form" model="ir.ui.view">
+			<field name="name">medical_history_procedure_form</field>
+			<field name="model">kb.medical.history.procedure</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="procedure"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="medical_history_vaccination_tree" model="ir.ui.view">
+			<field name="name">medical_history_vaccination_tree</field>
+			<field name="model">kb.medical.history.vaccination</field>
+			<field name="arch" type="xml">
+				<list>
+					<field name="create_date"/>
+					<field name="name"/>
+					<field name="vaccine"/>
+				</list>
+			</field>
+		</record>
+
+		<record id="medical_history_vaccination_form" model="ir.ui.view">
+			<field name="name">medical_history_vaccination_form</field>
+			<field name="model">kb.medical.history.vaccination</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="vaccine"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="medical_history_treatment_tree" model="ir.ui.view">
+			<field name="name">medical_history_treatment_tree</field>
+			<field name="model">kb.medical.history.treatment</field>
+			<field name="arch" type="xml">
+				<list>
+					<field name="create_date"/>
+					<field name="name"/>
+					<field name="treatment"/>
+				</list>
+			</field>
+		</record>
+
+		<record id="medical_history_treatment_form" model="ir.ui.view">
+			<field name="name">medical_history_treatment_form</field>
+			<field name="model">kb.medical.history.treatment</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<field name="treatment"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

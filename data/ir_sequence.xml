@@ -1,0 +1,31 @@
+<odoo>
+	<data>
+		<record id="medical_history_sequence" model="ir.sequence">
+            <field name="name">Medical History Sequence</field>
+            <field name="code">kb.medical.history.sequence</field>
+            <field name="prefix">AP</field>
+            <field name="padding">3</field>
+        </record>
+
+		<record id="medical_history_procedure_sequence" model="ir.sequence">
+            <field name="name">Medical History Procedure Sequence</field>
+            <field name="code">kb.medical.history.procedure.sequence</field>
+            <field name="prefix">DP</field>
+            <field name="padding">3</field>
+        </record>
+
+		<record id="medical_history_vaccination_sequence" model="ir.sequence">
+            <field name="name">Medical History Vaccination Sequence</field>
+            <field name="code">kb.medical.history.vaccination.sequence</field>
+            <field name="prefix">VA</field>
+            <field name="padding">3</field>
+        </record>
+
+		<record id="medical_history_treatment_sequence" model="ir.sequence">
+            <field name="name">Medical History Treatment Sequence</field>
+            <field name="code">kb.medical.history.treatment.sequence</field>
+            <field name="prefix">CASE</field>
+            <field name="padding">3</field>
+        </record>
+	</data>
+</odoo>

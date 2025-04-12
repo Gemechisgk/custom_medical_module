@@ -1,0 +1,72 @@
+<odoo>
+	<data>
+		<record id="medical_record_act" model="ir.actions.act_window">
+			<field name="name">Medical Records</field>
+			<field name="res_model">kb.medical.record</field>
+			<field name="view_mode">list,form</field>
+		</record>
+
+		<record id="medical_record_tree" model="ir.ui.view">
+			<field name="name">medical_record_tree</field>
+			<field name="model">kb.medical.record</field>
+			<field name="arch" type="xml">
+				<list>
+					<field name="name"/>
+					<field name="date_of_birth"/>
+					<field name="gender"/>
+					<field name="medical_history"/>
+					<field name="allergy_ids" widget="many2many_tags"/>
+				</list>
+			</field>
+		</record>
+
+		<record id="medical_record_form" model="ir.ui.view">
+			<field name="name">medical_record_form</field>
+			<field name="model">kb.medical.record</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+                            <button name="view_medical_histories" type="object" icon="fa-list" help="View all medical histories related to this record" class="oe_stat_button">
+                                <div class="o_field_widget o_stat_info">
+                                    <field string="Histories" name="history_count" widget="statinfo"/>
+                                </div>
+                            </button>
+                            <button name="create_medical_histories" type="object" icon="fa-plus-square" help="Create a new medical history for this record" class="oe_stat_button">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">New History</span>
+                                </div>
+                            </button>
+                        </div>
+						<label for="name"/>
+						<div class="oe_title">
+							<h1><field name="name" placeholder="John Doe"/></h1>
+						</div>
+						<group>
+							<group>
+								<field name="address" placeholder="Holiday street no. 43, etc..."/>
+								<field name="mobile" placeholder="+62 812 3456 7890, etc..."/>
+								<field name="allergy_ids" widget="many2many_tags"/>
+								<field name="medical_history" placeholder="COVID, mild cough, etc..."/>
+								<field name="citizenship_number" placeholder="357 824 010190 0001..."/>
+							</group>
+							<group>
+								<field name="date_of_birth" placeholder="01 January 1990, etc..."/>
+								<field name="gender" placeholder="Male / Female"/>
+								<field name="religion" placeholder="Islam, Buddha, etc..."/>
+								<field name="occupation" placeholder="Salesperson, manager, etc..."/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Medical History" name="medical_history">
+								<group>
+									<field name="history_ids" nolabel="1" colspan="2" readonly="1"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

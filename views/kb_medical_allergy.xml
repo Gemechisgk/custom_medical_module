@@ -1,0 +1,19 @@
+<odoo>
+	<data>
+		<record id="medical_allergy_act" model="ir.actions.act_window">
+			<field name="name">Medical Records</field>
+			<field name="res_model">kb.medical.allergy</field>
+			<field name="view_mode">list,form</field>
+		</record>
+
+		<record id="medical_allergy_tree" model="ir.ui.view">
+			<field name="name">medical_allergy_tree</field>
+			<field name="model">kb.medical.allergy</field>
+			<field name="arch" type="xml">
+				<list editable="top">
+					<field name="name"/>
+				</list>
+			</field>
+		</record>
+	</data>
+</odoo>

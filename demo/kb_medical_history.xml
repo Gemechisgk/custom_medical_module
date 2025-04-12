@@ -1,0 +1,66 @@
+<odoo>
+	<data>
+		<record id="medical_history_test_1_1" model="kb.medical.history">
+			<field name="user_id" ref="kb_medical_record.res_users_test_1"/>
+			<field name="name">AP001</field>
+			<field name="record_id" ref="kb_medical_record.medical_record_test_1"/>
+			<field name="date">2025-01-12 03:10:46</field>
+			<field name="test_result">TD = 1/1 mmhg
+BB = 72.0 Kg
+TB = 160.0 cm
+Temp. = 40.0 Celcius
+HR = 110 bpm
+RR = 6
+RBS = 4 mg/dl
+SpO2 = 99%
+			</field>
+			<field name="complaints">Demam, meriang, lemas</field>
+			<field name="diagnosis">Infeksi biasa</field>
+			<field name="medical_advice">Minum antibiotik dan istirahat</field>
+			<field name="drug_prescribed"></field>
+			<field name="lab_tested">Darah rutin</field>
+		</record>
+
+		<record id="medical_history_test_1_2" model="kb.medical.history">
+			<field name="user_id" ref="kb_medical_record.res_users_test_2"/>
+			<field name="name">AP002</field>
+			<field name="record_id" ref="kb_medical_record.medical_record_test_1"/>
+			<field name="date">2025-01-19 06:54:12</field>
+			<field name="test_result">TD = 0.8/1 mmhg
+BB = 70.0 Kg
+TB = 160.0 cm
+Temp. = 42.0 Celcius
+HR = 136 bpm
+RR = 6
+RBS = 4 mg/dl
+SpO2 = 99%
+			</field>
+			<field name="complaints">Demam tinggi, lemas</field>
+			<field name="diagnosis">Demam berdarah</field>
+			<field name="medical_advice">Rawat inap</field>
+			<field name="drug_prescribed"></field>
+			<field name="lab_tested">Darah lengkap</field>
+		</record>
+
+		<record id="medical_history_test_2_1" model="kb.medical.history">
+			<field name="user_id" ref="kb_medical_record.res_users_test_1"/>
+			<field name="name">AP003</field>
+			<field name="record_id" ref="kb_medical_record.medical_record_test_2"/>
+			<field name="date">2025-01-01 06:31:52</field>
+			<field name="test_result">TD = 1/1 mmhg
+BB = 54.0 Kg
+TB = 152.0 cm
+Temp. = 36.0 Celcius
+HR = 122 bpm
+RR = 6
+RBS = 4 mg/dl
+SpO2 = 100%
+			</field>
+			<field name="complaints">Batuk berdahak</field>
+			<field name="diagnosis">Batuk biasa</field>
+			<field name="medical_advice">Minum obat dan istirahat</field>
+			<field name="drug_prescribed"></field>
+			<field name="lab_tested"></field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,39 @@
+<odoo>
+	<data>
+		<record id="res_partner_test_1" model="res.partner">
+			<field name="name">Dr. Evelyn Devina</field>
+		</record>
+
+		<record id="res_partner_test_2" model="res.partner">
+			<field name="name">Dr. Rahajoe Imam Santoso</field>
+		</record>
+
+		<record id="res_partner_test_3" model="res.partner">
+			<field name="name">Dr. Dessy Sagita, M.Psi</field>
+		</record>
+
+		<record id="res_users_test_1" model="res.users">
+			<field name="name">Dr. Evelyn Devina</field>
+			<field name="partner_id" ref="kb_medical_record.res_partner_test_1"/>
+			<field name="login">evelyn</field>
+            <field name="password">evelyn</field>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user')])]"/>
+		</record>
+
+		<record id="res_users_test_2" model="res.users">
+			<field name="name">Dr. Rahajoe Imam Santoso</field>
+			<field name="partner_id" ref="kb_medical_record.res_partner_test_2"/>
+			<field name="login">rahajoe</field>
+            <field name="password">rahajoe</field>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user')])]"/>
+		</record>
+
+		<record id="res_users_test_3" model="res.users">
+			<field name="name">Dr. Dessy Sagita, M.Psi</field>
+			<field name="partner_id" ref="kb_medical_record.res_partner_test_3"/>
+			<field name="login">dessy</field>
+            <field name="password">dessy</field>
+            <field name="groups_id" eval="[Command.set([ref('base.group_user')])]"/>
+		</record>
+	</data>
+</odoo>

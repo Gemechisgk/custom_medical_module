@@ -1,0 +1,29 @@
+<odoo>
+	<data>
+		<record id="medical_record_test_1" model="kb.medical.record">
+			<field name="name">Abebe Alemu</field>
+			<field name="address">Kality, Addis Ababa</field>
+			<field name="mobile">0943 225 </field>
+			<field name="date_of_birth">2000-02-14</field>
+			<field name="citizenship_number">312 022 140200 0001</field>
+			<field name="gender">male</field>
+			<field name="religion">islam</field>
+			<field name="occupation">Salesperson</field>
+			<field name="allergy_ids" eval="[Command.set([ref('kb_medical_record.allergy_ibuprofen')])]"/>
+			<field name="medical_history">Pernah kena COVID</field>
+		</record>
+
+		<record id="medical_record_test_2" model="kb.medical.record">
+			<field name="name">Felicia Sherryl</field>
+			<field name="address">Lapangan Bola STU, Jl. Tauladan No.2 14, Tanah Abang, Jakarta Pusat</field>
+			<field name="mobile">0834 4822 7156</field>
+			<field name="date_of_birth">2001-08-29</field>
+			<field name="citizenship_number">346 021 290801 0003</field>
+			<field name="gender">female</field>
+			<field name="religion">christian</field>
+			<field name="occupation">General Manager</field>
+			<field name="allergy_ids" eval="[Command.set([ref('kb_medical_record.allergy_lamotrigine')])]"/>
+			<field name="medical_history">-</field>
+		</record>
+	</data>
+</odoo>

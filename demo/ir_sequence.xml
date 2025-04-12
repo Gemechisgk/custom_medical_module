@@ -1,0 +1,15 @@
+<odoo>
+	<data>
+		<record id="medical_history_sequence" model="ir.sequence">
+			<field name="number_next_actual">4</field>
+        </record>
+
+		<record id="medical_history_procedure_sequence" model="ir.sequence">
+			<field name="number_next_actual">3</field>
+        </record>
+        
+		<record id="medical_history_treatment_sequence" model="ir.sequence">
+			<field name="number_next_actual">3</field>
+        </record>
+    </data>
+</odoo>

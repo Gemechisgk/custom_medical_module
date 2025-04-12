@@ -1,0 +1,84 @@
+<odoo>
+	<data>
+		<record id="medical_history_act" model="ir.actions.act_window">
+			<field name="name">Medical Records</field>
+			<field name="res_model">kb.medical.history</field>
+			<field name="view_mode">list,form</field>
+		</record>
+
+		<record id="medical_history_tree" model="ir.ui.view">
+			<field name="name">medical_history_tree</field>
+			<field name="model">kb.medical.history</field>
+			<field name="arch" type="xml">
+				<list>
+					<field name="user_id"/>
+					<field name="date"/>
+					<field name="complaints"/>
+					<field name="diagnosis"/>
+					<field name="medical_advice"/>
+					<field name="drug_prescribed"/>
+					<field name="lab_tested"/>
+				</list>
+			</field>
+		</record>
+
+		<record id="medical_history_form" model="ir.ui.view">
+			<field name="name">medical_history_form</field>
+			<field name="model">kb.medical.history</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+                            <button name="create_procedure_histories" type="object" icon="fa-plus-square" help="" class="oe_stat_button">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">New Procedures</span>
+                                </div>
+                            </button>
+                            <button name="create_vaccination_histories" type="object" icon="fa-plus-square" help="" class="oe_stat_button">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">New Vaccination</span>
+                                </div>
+                            </button>
+                            <button name="create_treatment_histories" type="object" icon="fa-plus-square" help="" class="oe_stat_button">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">New Treatment</span>
+                                </div>
+                            </button>
+                        </div>
+						<group>
+							<group>
+								<field name="date" invisible="1"/>
+								<field name="complaints" placeholder="Stomachache, cough, etc..."/>
+								<field name="test_result" placeholder="Blood pressure, patient height, etc..."/>
+								<field name="diagnosis" placeholder="Mild cough, dengue, etc..."/>
+							</group>
+							<group>
+								<field name="medical_advice" placeholder="Take medicine, rest, etc..."/>
+								<field name="drug_prescribed" placeholder="Paracetamol, antibiotic, etc..."/>
+								<field name="lab_tested" placeholder="Full blood work, etc..."/>
+								<field name="user_id" invisible="1"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Procedures" name="procedure">
+								<group>
+									<field name="procedure_ids" nolabel="1" colspan="2" readonly="1"/>
+								</group>
+							</page>
+							<page string="Vaccinations" name="vaccination">
+								<group>
+									<field name="vaccination_ids" nolabel="1" colspan="2" readonly="1"/>
+								</group>
+							</page>
+							<page string="Treatments" name="treatment">
+								<group>
+									<field name="treatment_ids" nolabel="1" colspan="2" readonly="1"/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

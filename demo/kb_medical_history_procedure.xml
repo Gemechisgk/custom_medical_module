@@ -1,0 +1,15 @@
+<odoo>
+	<data>
+		<record id="medical_history_procedure_test_1_1" model="kb.medical.history.procedure">
+			<field name="history_id" ref="kb_medical_record.medical_history_test_1_1"/>
+			<field name="name">DP001</field>
+			<field name="procedure">Pengambilan darah</field>
+		</record>
+
+		<record id="medical_history_procedure_test_1_2" model="kb.medical.history.procedure">
+			<field name="history_id" ref="kb_medical_record.medical_history_test_1_2"/>
+			<field name="name">DP002</field>
+			<field name="procedure">Tes laboratorium darah lengkap</field>
+		</record>
+	</data>
+</odoo>

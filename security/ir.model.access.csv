@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+medical_record_all,medical_record_all,model_kb_medical_record,base.group_user,1,1,1,1
+medical_history_all,medical_history_all,model_kb_medical_history,base.group_user,1,1,1,1
+medical_history_procedure_all,medical_history_procedure_all,model_kb_medical_history_procedure,base.group_user,1,1,1,1
+medical_history_vaccination_all,medical_history_vaccination_all,model_kb_medical_history_vaccination,base.group_user,1,1,1,1
+medical_history_treatment_all,medical_history_treatment_all,model_kb_medical_history_treatment,base.group_user,1,1,1,1
+medical_allergy_all,medical_allergy_all,model_kb_medical_allergy,base.group_user,1,1,1,1

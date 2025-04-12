@@ -1,0 +1,15 @@
+<odoo>
+	<data>
+		<record id="medical_history_treatment_test_1_1" model="kb.medical.history.procedure">
+			<field name="history_id" ref="custom_medical_module.medical_history_test_1_2"/> <!-- Updated -->
+			<field name="name">CASE001</field>
+			<field name="procedure">Pendaftaran kamar rawat inap</field>
+		</record>
+
+		<record id="medical_history_treatment_test_1_2" model="kb.medical.history.procedure">
+			<field name="history_id" ref="custom_medical_module.medical_history_test_2_1"/> <!-- Updated -->
+			<field name="name">CASE002</field>
+			<field name="procedure">Cek fisik (rongga mulut)</field>
+		</record>
+	</data>
+</odoo>
