@@ -56,7 +56,7 @@
 								<field name="date_of_birth" placeholder="01 January 1990, etc..."/>
 								<field name="age" readonly="1"/>
 								<field name="gender" placeholder="Male / Female"/>
-								<field name="religion" placeholder="Islam, Buddha, etc..."/>
+								<field name="religion" placeholder="Patient Religion."/>
 								<field name="occupation" placeholder="Salesperson, manager, etc..."/>
 							</group>
 						</group>

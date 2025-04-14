@@ -19,10 +19,8 @@ class MedicalRecord(models.Model):
 		('female', _('Female'))
 	], string=_("Gender"), required=True)
 	religion = fields.Selection([
-		('buddha', _('Buddha')),
-		('islam', _('Islam')),
-		('hindu', _('Hindu')),
 		('christian', _('Christian')),
+		('islam', _('Islam')),
 		('catholic', _('Catholic')),
 		('other', _('Other'))
 	], string=_("Religion"))
