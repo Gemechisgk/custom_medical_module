@@ -12,7 +12,7 @@ class MedicalRecord(models.Model):
 	address = fields.Char(string=_("Address"))
 	mobile = fields.Char(string=_("Mobile Number"), required=True)
 	date_of_birth = fields.Date(string=_("Birth Date"), required=True)
-	age = fields.Integer(string=_("Age"), compute="_compute_age", store=True)  # New field
+	age = fields.Integer(string=_("Age"), compute="_compute_age", store=True)  
 	id_number = fields.Char(string=_("ID Number"), required=True)
 	gender = fields.Selection([
 		('male', _('Male')),
