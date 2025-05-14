@@ -1,6 +1,7 @@
 <odoo>
 	<data>
-		<menuitem id="medical_root_menu" name="Medical"/>
+		<menuitem id="medical_root_menu" name="Medical" 
+              web_icon="custom_medical_module,static/description/icon.png"/>
 		<menuitem id="medical_configuration_root_menu" name="Configuration" parent="medical_root_menu" sequence="300"/>
 
 		<menuitem id="medical_record_menu" name="Medical Records" parent="medical_root_menu" action="medical_record_act" sequence="10"/>

@@ -6,12 +6,27 @@
 			<field name="view_mode">list,form</field>
 		</record>
 
+		<!-- Server Action for Redirecting to Existing Record -->
+		<record id="action_view_existing_medical_record" model="ir.actions.server">
+			<field name="name">View Existing Medical Record</field>
+			<field name="model_id" ref="model_kb_medical_record"/>
+			<field name="binding_model_id" ref="model_kb_medical_record"/>
+			<field name="binding_view_types">form</field>
+			<field name="state">code</field>
+			<field name="code">
+				action = model.action_view_existing_record()
+			</field>
+		</record>
+
 		<record id="medical_record_tree" model="ir.ui.view">
 			<field name="name">medical_record_tree</field>
 			<field name="model">kb.medical.record</field>
 			<field name="arch" type="xml">
 				<list>
+					<field name="reg_no"/>
 					<field name="name"/>
+					<field name="employee_id"/>
+					<field name="id_number"/>
 					<field name="date_of_birth"/>
 					<field name="gender"/>
 					<field name="medical_history"/>
@@ -20,27 +35,53 @@
 			</field>
 		</record>
 
+		<record id="view_medical_record_search" model="ir.ui.view">
+			<field name="name">kb.medical.record.search</field>
+			<field name="model">kb.medical.record</field>
+			<field name="arch" type="xml">
+				<search string="Search Medical Records">
+					<field name="name"/>
+					<field name="employee_id"/>
+					<field name="id_number"/>
+					<field name="reg_no"/>
+					<separator/>
+					<filter string="Employee" name="employee_id" context="{'group_by': 'employee_id'}"/>
+					<filter string="Gender" name="gender" context="{'group_by': 'gender'}"/>
+					<separator/>
+					<group expand="0" string="Group By">
+						<filter string="Employee" name="group_by_employee" context="{'group_by': 'employee_id'}"/>
+						<filter string="Gender" name="group_by_gender" context="{'group_by': 'gender'}"/>
+						<filter string="Birth Date" name="group_by_birth" context="{'group_by': 'date_of_birth'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+
 		<record id="medical_record_form" model="ir.ui.view">
 			<field name="name">medical_record_form</field>
 			<field name="model">kb.medical.record</field>
 			<field name="arch" type="xml">
 				<form>
+					<header>
+						<button name="action_redirect_to_existing" string="View Existing Record" type="object" 
+								invisible="not id" class="oe_highlight"/>
+					</header>
 					<sheet>
 						<div class="oe_button_box" name="button_box">
-                            <button name="view_medical_histories" type="object" icon="fa-list" help="View all medical histories related to this record" class="oe_stat_button">
-                                <div class="o_field_widget o_stat_info">
-                                    <field string="Histories" name="history_count" widget="statinfo"/>
-                                </div>
-                            </button>
-                            <button name="create_medical_histories" type="object" icon="fa-plus-square" help="Create a new medical history for this record" class="oe_stat_button">
-                                <div class="o_field_widget o_stat_info">
-                                    <span class="o_stat_text">New History</span>
-                                </div>
-                            </button>
-                        </div>
+							<button name="view_medical_histories" type="object" icon="fa-list" help="View all medical histories related to this record" class="oe_stat_button">
+								<div class="o_field_widget o_stat_info">
+									<field string="Histories" name="history_count" widget="statinfo"/>
+								</div>
+							</button>
+							<button name="create_medical_histories" type="object" icon="fa-plus-square" help="Create a new medical history for this record" class="oe_stat_button">
+								<div class="o_field_widget o_stat_info">
+									<span class="o_stat_text">New History</span>
+								</div>
+							</button>
+						</div>
 						<label for="name"/>
 						<div class="oe_title">
-							<h1><field name="employee_id" placeholder="Select an employee"/></h1>
+							<h1><field name="employee_id" placeholder="Select an employee" options="{'no_create': True}"/></h1>
 						</div>
 						<group>
 							<group>
@@ -56,7 +97,6 @@
 								<field name="date_of_birth" placeholder="01 January 1990, etc..."/>
 								<field name="age" readonly="1"/>
 								<field name="gender" placeholder="Male / Female"/>
-								<field name="religion" placeholder="Patient Religion."/>
 								<field name="occupation" placeholder="Salesperson, manager, etc..."/>
 							</group>
 						</group>

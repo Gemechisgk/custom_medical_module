@@ -7,7 +7,6 @@
 			<field name="date_of_birth">2000-02-14</field>
 			<field name="id_number">312 022 140200 0001</field>
 			<field name="gender">male</field>
-			<field name="religion">islam</field>
 			<field name="occupation">Salesperson</field>
 			<field name="allergy_ids" eval="[Command.set([ref('custom_medical_module.allergy_ibuprofen')])]"/>
 			<field name="medical_history">Pernah kena COVID</field>
@@ -20,7 +19,6 @@
 			<field name="date_of_birth">2001-08-29</field>
 			<field name="id_number">NTS-123</field>
 			<field name="gender">female</field>
-			<field name="religion">christian</field>
 			<field name="occupation">General Manager</field>
 			<field name="allergy_ids" eval="[Command.set([ref('custom_medical_module.allergy_lamotrigine')])]"/>
 			<field name="medical_history">-</field>

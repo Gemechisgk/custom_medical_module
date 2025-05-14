@@ -72,10 +72,6 @@
 											<td>: <span t-field="o.gender"/></td>
 										</tr>
 										<tr>
-											<td>Religion</td>
-											<td>: <span t-field="o.religion"/></td>
-										</tr>
-										<tr>
 											<td>Occupation</td>
 											<td>: <span t-field="o.occupation"/></td>
 										</tr>
