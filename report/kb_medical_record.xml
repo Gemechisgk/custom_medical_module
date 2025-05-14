@@ -12,12 +12,6 @@
 										<div style="font-size: 1.25em"><strong>MEDICAL RECORD</strong></div>
 									</div>
 								</div>
-								<div class="col-2"/>
-								<div class="col-4" style="text-align: right;">
-									<p>
-										Reg. No: <span t-field="o.reg_no"/>
-									</p>
-								</div>
 							</div>
 						</div>
 						

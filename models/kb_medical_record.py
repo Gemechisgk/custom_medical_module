@@ -26,7 +26,6 @@ class MedicalRecord(models.Model):
 	history_count = fields.Integer(compute="_calculate_history_count")
 	allergy_ids = fields.Many2many("kb.medical.allergy", string=_("Allergies"))
 	medical_history = fields.Text(string=_("Medical History"))
-	reg_no = fields.Char(string=_("Reg. No"), readonly=True, copy=False, default="New")
 
 	def action_redirect_to_existing(self):
 		"""Redirect to existing record"""
@@ -52,30 +51,54 @@ class MedicalRecord(models.Model):
 				if duplicate:
 					raise exceptions.ValidationError(_('A medical record already exists for employee %s!') % record.employee_id.name)
 
-	@api.model
-	def create(self, vals):
-		if not vals.get('employee_id'):
-			raise exceptions.ValidationError(_('Employee is required to create a medical record!'))
+	@api.onchange('employee_id')
+	def _onchange_employee_id(self):
+		"""Auto-fill fields based on the selected employee."""
+		if self.employee_id:
+			# Check for existing record
+			existing_record = self.search([
+				('employee_id', '=', self.employee_id.id),
+				('id', '!=', self.id or 0)
+			], limit=1)
 			
-		# Check for existing record
-		existing_record = self.search([
-			('employee_id', '=', vals['employee_id']),
-			('company_id', '=', vals.get('company_id', self.env.company.id))
-		], limit=1)
-		
-		if existing_record:
-			# If we're coming from the warning dialog, redirect to the existing record
-			if self._context.get('redirect_to_existing'):
-				return existing_record.action_redirect_to_existing()
-			# Update existing record
-			existing_record.write(vals)
-			return existing_record
+			if existing_record:
+				return {
+					'warning': {
+						'title': _('Warning'),
+						'message': _('Employee %s already has a medical record (ID: %s). Please search for the existing record instead of creating a new one.') % 
+							(self.employee_id.name, existing_record.id_number)
+					}
+				}
 			
-		# Generate registration number for new record
-		if vals.get('reg_no', 'New') == 'New':
-			vals['reg_no'] = self.env['ir.sequence'].next_by_code('kb.medical.record') or 'New'
+			self.name = self.employee_id.name
+			self.address = self.employee_id.address_id.street if self.employee_id.address_id else ''
+			self.mobile = self.employee_id.mobile_phone or self.employee_id.work_phone or ''
+			self.date_of_birth = self.employee_id.date_of_birth
+			self.gender = 'male' if self.employee_id.gender == 'male' else 'female'
+			self.occupation = self.employee_id.job_id.name if self.employee_id.job_id else ''
+			self.id_number = self.employee_id.id_number_generated or False
+
+	@api.model_create_multi
+	def create(self, vals_list):
+		for vals in vals_list:
+			if not vals.get('employee_id'):
+				raise exceptions.ValidationError(_('Employee is required to create a medical record!'))
+				
+			# Check for existing record
+			existing_record = self.search([
+				('employee_id', '=', vals['employee_id']),
+				('company_id', '=', vals.get('company_id', self.env.company.id))
+			], limit=1)
 			
-		return super(MedicalRecord, self).create(vals)
+			if existing_record:
+				# If we're coming from the warning dialog, redirect to the existing record
+				if self._context.get('redirect_to_existing'):
+					return existing_record.action_redirect_to_existing()
+				# Update existing record
+				existing_record.write(vals)
+				return existing_record
+				
+		return super(MedicalRecord, self).create(vals_list)
 
 	def write(self, vals):
 		if vals.get('employee_id'):
@@ -107,33 +130,6 @@ class MedicalRecord(models.Model):
 			else:
 				record.age = 0
 
-	@api.onchange('employee_id')
-	def _onchange_employee_id(self):
-		"""Auto-fill fields based on the selected employee."""
-		if self.employee_id:
-			# Check for existing record
-			existing_record = self.search([
-				('employee_id', '=', self.employee_id.id),
-				('id', '!=', self.id or 0)
-			], limit=1)
-			
-			if existing_record:
-				return {
-					'warning': {
-						'title': _('Warning'),
-						'message': _('Employee %s already has a medical record (ID: %s). Please search for the existing record instead of creating a new one.') % 
-							(self.employee_id.name, existing_record.reg_no)
-					}
-				}
-			
-			self.name = self.employee_id.name
-			self.address = self.employee_id.address_id.street if self.employee_id.address_id else ''
-			self.mobile = self.employee_id.mobile_phone or self.employee_id.work_phone or ''
-			self.date_of_birth = self.employee_id.date_of_birth
-			self.gender = 'male' if self.employee_id.gender == 'male' else 'female'
-			self.occupation = self.employee_id.job_id.name if self.employee_id.job_id else ''
-			self.id_number = self.employee_id.id_number_generated or False
-
 	def view_medical_histories(self):
 		for record in self:
 			return {
@@ -163,11 +159,10 @@ class MedicalRecord(models.Model):
 		args = args or []
 		domain = []
 		if name:
-			domain = ['|', '|', '|',
+			domain = ['|', '|',
 				('name', operator, name),
 				('employee_id.name', operator, name),
-				('id_number', operator, name),
-				('reg_no', operator, name)
+				('id_number', operator, name)
 			]
 		return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)
 
@@ -176,10 +171,9 @@ class MedicalRecord(models.Model):
 		args = args or []
 		domain = []
 		if name:
-			domain = ['|', '|', '|',
+			domain = ['|', '|',
 				('name', operator, name),
 				('employee_id.name', operator, name),
-				('id_number', operator, name),
-				('reg_no', operator, name)
+				('id_number', operator, name)
 			]
 		return self.search(domain + args, limit=limit).name_get()
