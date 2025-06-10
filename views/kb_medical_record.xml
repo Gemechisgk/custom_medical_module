@@ -9,7 +9,7 @@
 
 		<!-- Server Action for Redirecting to Existing Record -->
 		<record id="action_view_existing_medical_record" model="ir.actions.server">
-			
+			<field name="name">View Existing Medical Record</field>
 			<field name="model_id" ref="model_kb_medical_record"/>
 			<field name="binding_model_id" ref="model_kb_medical_record"/>
 			<field name="binding_view_types">form</field>

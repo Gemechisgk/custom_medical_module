@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_doctor_report_tree" model="ir.ui.view">
+        <field name="name">kb.medical.doctor.report.tree</field>
+        <field name="model">kb.medical.doctor.report</field>
+        <field name="arch" type="xml">
+            <list string="Doctor Report">
+                <field name="doctor_name"/>
+                <field name="total_patients"/>
+                <field name="total_consultations"/>
+                <field name="total_procedures"/>
+                <field name="total_treatments"/>
+                <field name="total_vaccinations"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_doctor_report_graph" model="ir.ui.view">
+        <field name="name">kb.medical.doctor.report.graph</field>
+        <field name="model">kb.medical.doctor.report</field>
+        <field name="arch" type="xml">
+            <graph string="Doctor Report" type="bar">
+                <field name="doctor_name"/>
+                <field name="total_patients" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_doctor_report_pivot" model="ir.ui.view">
+        <field name="name">kb.medical.doctor.report.pivot</field>
+        <field name="model">kb.medical.doctor.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Doctor Report">
+                <field name="doctor_name" type="row"/>
+                <field name="total_patients" type="measure"/>
+                <field name="total_consultations" type="measure"/>
+                <field name="total_procedures" type="measure"/>
+                <field name="total_treatments" type="measure"/>
+                <field name="total_vaccinations" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_doctor_report_form" model="ir.ui.view">
+        <field name="name">kb.medical.doctor.report.form</field>
+        <field name="model">kb.medical.doctor.report</field>
+        <field name="arch" type="xml">
+            <form string="Doctor Report">
+                <group>
+                    <field name="doctor_name"/>
+                    <field name="total_patients"/>
+                    <field name="total_consultations"/>
+                    <field name="total_procedures"/>
+                    <field name="total_treatments"/>
+                    <field name="total_vaccinations"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_doctor_report" model="ir.actions.act_window">
+        <field name="name">Doctor Report</field>
+        <field name="res_model">kb.medical.doctor.report</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_id" ref="view_doctor_report_tree"/>
+        <field name="groups_id" eval="[(4, ref('custom_medical_module.group_medical_doctor_report_manager'))]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data available
+            </p>
+        </field>
+    </record>
+</odoo> 

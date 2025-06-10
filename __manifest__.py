@@ -22,15 +22,17 @@
 
     # always loaded
     'data': [
+        'security/medical_doctor_report_groups.xml',
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
         'data/kb_medical_allergy.xml',
-        'report/kb_medical_record.xml',
+        'views/kb_medical_record.xml',  # Load action definitions first
         'views/kb_medical_allergy.xml',
         'views/kb_medical_history.xml',
         'views/kb_medical_history_other.xml',
-        'views/kb_medical_record.xml',
-        'views/menu.xml',
+        'report/kb_medical_record.xml',
+        'views/kb_medical_doctor_report_views.xml',
+        'views/menu.xml',  # Load menu.xml last since it references actions
     ],
     # only loaded in demonstration mode
     'demo': [

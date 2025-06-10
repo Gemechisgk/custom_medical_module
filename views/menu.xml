@@ -1,10 +1,17 @@
 <odoo>
 	<data>
+		<!-- Root Menu -->
 		<menuitem id="medical_root_menu" name="Medical" 
               web_icon="custom_medical_module,static/description/icon.png"/>
+
+		<!-- Configuration Menu -->
 		<menuitem id="medical_configuration_root_menu" name="Configuration" parent="medical_root_menu" sequence="300"/>
 
-		<menuitem id="medical_record_menu" name="Medical Records" parent="medical_root_menu" action="medical_record_act" sequence="10"/>
-		<menuitem id="medical_allergy_menu" name="List of Allergy" parent="medical_configuration_root_menu" action="medical_allergy_act" sequence="10"/>
+		<!-- Main Menu Items -->
+		<menuitem id="medical_record_menu" name="Medical Records" parent="medical_root_menu" action="custom_medical_module.medical_record_act" sequence="10"/>
+		<menuitem id="menu_doctor_report" name="Doctor Report" parent="medical_root_menu" action="custom_medical_module.action_doctor_report" sequence="20" groups="custom_medical_module.group_medical_doctor_report_manager"/>
+
+		<!-- Configuration Menu Items -->
+		<menuitem id="medical_allergy_menu" name="List of Allergy" parent="medical_configuration_root_menu" action="custom_medical_module.medical_allergy_act" sequence="10"/>
 	</data>
 </odoo>

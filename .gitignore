@@ -23,3 +23,5 @@ env/
 *.log
 *.pot
 *.pyc 
+models/__pycache__/__init__.cpython-312.pyc
+models/__pycache__/kb_medical_record.cpython-312.pyc
