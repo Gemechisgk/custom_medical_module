@@ -11,3 +11,4 @@ medical_expense_all,medical_expense_all,model_kb_medical_expense,base.group_user
 medical_accident_all,medical_accident_all,model_kb_medical_accident,base.group_user,1,1,1,1
 medical_death_all,medical_death_all,model_kb_medical_death,base.group_user,1,1,1,1
 medical_disease_occurrence_all,medical_disease_occurrence_all,model_kb_medical_disease_occurrence,base.group_user,1,1,1,1
+medical_disease_all,medical_disease_all,model_kb_medical_disease,base.group_user,1,1,1,1

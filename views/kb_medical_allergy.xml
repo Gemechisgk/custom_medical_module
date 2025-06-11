@@ -15,21 +15,5 @@
 				</list>
 			</field>
 		</record>
-
-		<record id="medical_disease_act" model="ir.actions.act_window">
-			<field name="name">List of Disease</field>
-			<field name="res_model">kb.medical.disease</field>
-			<field name="view_mode">list,form</field>
-		</record>
-
-		<record id="medical_disease_tree" model="ir.ui.view">
-			<field name="name">medical_disease_tree</field>
-			<field name="model">kb.medical.disease</field>
-			<field name="arch" type="xml">
-				<list editable="top">
-					<field name="name"/>
-				</list>
-			</field>
-		</record>
 	</data>
 </odoo>

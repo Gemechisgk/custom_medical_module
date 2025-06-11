@@ -34,6 +34,7 @@
         'report/kb_medical_record.xml',
         'views/kb_medical_record.xml',
         'views/kb_medical_allergy.xml',
+        'views/kb_medical_disease.xml',
         'views/kb_medical_history.xml',
         'views/kb_medical_history_other.xml',
         'views/menu.xml',
