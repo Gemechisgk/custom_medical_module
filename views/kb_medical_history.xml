@@ -34,9 +34,9 @@
                                     <span class="o_stat_text">New Procedures</span>
                                 </div>
                             </button>
-                            <button name="create_vaccination_histories" type="object" icon="fa-plus-square" help="" class="oe_stat_button">
+                            <button name="create_accident_histories" type="object" icon="fa-plus-square" help="" class="oe_stat_button">
                                 <div class="o_field_widget o_stat_info">
-                                    <span class="o_stat_text">New Vaccination</span>
+                                    <span class="o_stat_text">New Accident</span>
                                 </div>
                             </button>
                             <button name="create_treatment_histories" type="object" icon="fa-plus-square" help="" class="oe_stat_button">
@@ -65,10 +65,8 @@
 									<field name="procedure_ids" nolabel="1" colspan="2" readonly="1"/>
 								</group>
 							</page>
-							<page string="Vaccinations" name="vaccination">
-								<group>
-									<field name="vaccination_ids" nolabel="1" colspan="2" readonly="1"/>
-								</group>
+							<page string="Accidents" name="accident">
+								<field name="accident_ids" nolabel="1" colspan="2" readonly="1"/>
 							</page>
 							<page string="Treatments" name="treatment">
 								<group>
@@ -77,6 +75,7 @@
 							</page>
 						</notebook>
 					</sheet>
+					<chatter/>
 				</form>
 			</field>
 		</record>

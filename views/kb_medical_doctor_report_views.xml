@@ -54,6 +54,7 @@
                     <field name="total_treatments"/>
                     <field name="total_vaccinations"/>
                 </group>
+                <chatter/>
             </form>
         </field>
     </record>

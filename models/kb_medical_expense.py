@@ -2,6 +2,7 @@ from odoo import models, fields, _
 
 class MedicalExpense(models.Model):
     _name = 'kb.medical.expense'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = _('Medical Expense')
     _order = 'date desc'
 

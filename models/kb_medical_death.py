@@ -2,6 +2,7 @@ from odoo import models, fields, _
 
 class MedicalDeath(models.Model):
     _name = 'kb.medical.death'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = _('Medical Death Record')
     _order = 'date_of_expiry desc'
 

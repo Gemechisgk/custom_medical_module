@@ -25,6 +25,7 @@
         'security/medical_doctor_report_groups.xml',
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
+        'data/ir_sequence_accident.xml',
         'data/kb_medical_allergy.xml',
         'views/kb_medical_expense.xml',
         'views/kb_medical_accident.xml',

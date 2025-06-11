@@ -2,6 +2,7 @@ from odoo import models, fields, _
 
 class MedicalDisease(models.Model):
     _name = 'kb.medical.disease'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = _('Disease List')
     _order = 'name asc'
 
@@ -9,6 +10,7 @@ class MedicalDisease(models.Model):
 
 class MedicalDiseaseOccurrence(models.Model):
     _name = 'kb.medical.disease.occurrence'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = _('Disease Occurrence')
     _order = 'date desc'
 

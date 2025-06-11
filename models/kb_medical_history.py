@@ -3,6 +3,7 @@ from datetime import datetime
 
 class MedicalHistory(models.Model):
 	_name = 'kb.medical.history'
+	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = _('Medical Histories')
 	_order = "date desc"
 
@@ -19,6 +20,7 @@ class MedicalHistory(models.Model):
 	vaccination_ids = fields.One2many("kb.medical.history.vaccination", "history_id", string=_("Vaccinations"))
 	treatment_ids = fields.One2many("kb.medical.history.treatment", "history_id", string=_("Treatments"))
 	lab_tested = fields.Text(string=_("Lab Tests"))
+	accident_ids = fields.One2many('kb.medical.accident', 'history_id', string=_('Accidents'))
 
 	@api.model_create_multi
 	def create(self, vals_list):
@@ -39,18 +41,18 @@ class MedicalHistory(models.Model):
 				}
 			}
 
-	def create_vaccination_histories(self):
-		for history in self:
-			return {
-				'type': 'ir.actions.act_window',
-				'name': 'Create New Vaccination History',
-				'res_model': 'kb.medical.history.vaccination',
-				'view_mode': 'form',
-				'target': 'new',
-				'context': {
-					'default_history_id': history.id,
-				}
-			}
+	# def create_vaccination_histories(self):
+	#     for history in self:
+	#         return {
+	#             'type': 'ir.actions.act_window',
+	#             'name': 'Create New Vaccination History',
+	#             'res_model': 'kb.medical.history.vaccination',
+	#             'view_mode': 'form',
+	#             'target': 'new',
+	#             'context': {
+	#                 'default_history_id': history.id,
+	#             }
+	#         }
 
 	def create_treatment_histories(self):
 		for history in self:
@@ -65,8 +67,22 @@ class MedicalHistory(models.Model):
 				}
 			}
 
+	def create_accident_histories(self):
+		for history in self:
+			return {
+				'type': 'ir.actions.act_window',
+				'name': 'Create New Accident',
+				'res_model': 'kb.medical.accident',
+				'view_mode': 'form',
+				'target': 'new',
+				'context': {
+					'default_history_id': history.id,
+				}
+			}
+
 class MedicalHistoryProcedure(models.Model):
 	_name = "kb.medical.history.procedure"
+	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = _("Procedure Histories")
 	_order = "create_date desc"
 
@@ -82,6 +98,7 @@ class MedicalHistoryProcedure(models.Model):
 
 class MedicalHistoryVaccination(models.Model):
 	_name = "kb.medical.history.vaccination"
+	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = _("Vaccination Histories")
 	_order = "create_date desc"
 
@@ -97,6 +114,7 @@ class MedicalHistoryVaccination(models.Model):
 
 class MedicalHistoryTreatment(models.Model):
 	_name = "kb.medical.history.treatment"
+	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = _("Treatment Histories")
 	_order = "create_date desc"
 

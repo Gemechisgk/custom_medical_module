@@ -3,6 +3,7 @@ from datetime import date
 
 class MedicalRecord(models.Model):
 	_name = 'kb.medical.record'
+	_inherit = ['mail.thread', 'mail.activity.mixin']
 	_description = _('Medical Records')
 	_order = "name desc"
 	_sql_constraints = [
