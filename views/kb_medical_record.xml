@@ -100,6 +100,16 @@
 									<field name="history_ids" nolabel="1" colspan="2" readonly="1"/>
 								</group>
 							</page>
+							<page string="Expenses">
+								<field name="expense_ids" context="{'default_record_id': id}" nolabel="1">
+									<list>
+										<field name="date"/>
+										<field name="payment_made"/>
+										<field name="particulars"/>
+										<field name="remarks"/>
+									</list>
+								</field>
+							</page>
 						</notebook>
 					</sheet>
 				</form>

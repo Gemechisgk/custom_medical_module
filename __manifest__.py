@@ -26,13 +26,17 @@
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
         'data/kb_medical_allergy.xml',
-        'views/kb_medical_record.xml',  # Load action definitions first
+        'views/kb_medical_expense.xml',
+        'views/kb_medical_accident.xml',
+        'views/kb_medical_death.xml',
+        'views/kb_medical_disease_occurrence.xml',
+        'views/kb_medical_doctor_report_views.xml',
+        'report/kb_medical_record.xml',
+        'views/kb_medical_record.xml',
         'views/kb_medical_allergy.xml',
         'views/kb_medical_history.xml',
         'views/kb_medical_history_other.xml',
-        'report/kb_medical_record.xml',
-        'views/kb_medical_doctor_report_views.xml',
-        'views/menu.xml',  # Load menu.xml last since it references actions
+        'views/menu.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

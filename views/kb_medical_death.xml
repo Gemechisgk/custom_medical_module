@@ -1,0 +1,34 @@
+<odoo>
+    <record id="medical_death_act" model="ir.actions.act_window">
+        <field name="name">Medical Deaths</field>
+        <field name="res_model">kb.medical.death</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="medical_death_tree" model="ir.ui.view">
+        <field name="name">medical_death_tree</field>
+        <field name="model">kb.medical.death</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_name"/>
+                <field name="cause_of_death"/>
+                <field name="date_of_expiry"/>
+            </list>
+        </field>
+    </record>
+    <record id="medical_death_form" model="ir.ui.view">
+        <field name="name">medical_death_form</field>
+        <field name="model">kb.medical.death</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="record_id"/>
+                        <field name="cause_of_death"/>
+                        <field name="date_of_expiry"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo> 

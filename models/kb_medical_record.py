@@ -26,6 +26,7 @@ class MedicalRecord(models.Model):
 	history_count = fields.Integer(compute="_calculate_history_count")
 	allergy_ids = fields.Many2many("kb.medical.allergy", string=_("Allergies"))
 	medical_history = fields.Text(string=_("Medical History"))
+	expense_ids = fields.One2many('kb.medical.expense', 'record_id', string=_('Expenses'))
 
 	def action_redirect_to_existing(self):
 		"""Redirect to existing record"""

@@ -7,3 +7,7 @@ medical_history_treatment_all,medical_history_treatment_all,model_kb_medical_his
 medical_allergy_all,medical_allergy_all,model_kb_medical_allergy,base.group_user,1,1,1,1
 medical_doctor_report_all,medical_doctor_report_all,model_kb_medical_doctor_report,base.group_user,1,0,0,0
 medical_doctor_report_manager,medical_doctor_report_manager,model_kb_medical_doctor_report,custom_medical_module.group_medical_doctor_report_manager,1,0,0,0
+medical_expense_all,medical_expense_all,model_kb_medical_expense,base.group_user,1,1,1,1
+medical_accident_all,medical_accident_all,model_kb_medical_accident,base.group_user,1,1,1,1
+medical_death_all,medical_death_all,model_kb_medical_death,base.group_user,1,1,1,1
+medical_disease_occurrence_all,medical_disease_occurrence_all,model_kb_medical_disease_occurrence,base.group_user,1,1,1,1

@@ -1,0 +1,37 @@
+<odoo>
+    <record id="medical_accident_act" model="ir.actions.act_window">
+        <field name="name">Medical Accidents</field>
+        <field name="res_model">kb.medical.accident</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="medical_accident_tree" model="ir.ui.view">
+        <field name="name">medical_accident_tree</field>
+        <field name="model">kb.medical.accident</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_name"/>
+                <field name="sex"/>
+                <field name="date_of_visit"/>
+                <field name="place_of_treatment"/>
+                <field name="type_of_disease"/>
+            </list>
+        </field>
+    </record>
+    <record id="medical_accident_form" model="ir.ui.view">
+        <field name="name">medical_accident_form</field>
+        <field name="model">kb.medical.accident</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="record_id"/>
+                        <field name="date_of_visit"/>
+                        <field name="place_of_treatment"/>
+                        <field name="type_of_disease"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo> 
