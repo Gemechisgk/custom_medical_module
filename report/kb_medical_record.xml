@@ -131,9 +131,9 @@
 													<span t-field="history.drug_prescribed"/>
 												</div>
 												<div class="mb-2">
-													<b>Vaccination:</b><br/>
-													<t t-foreach="history.vaccination_ids" t-as="line">
-														<div><span t-field="line.vaccine"/> / <span t-field="line.create_date"/></div>
+													<b>Accident:</b><br/>
+													<t t-foreach="history.accident_ids" t-as="line">
+														<div><span t-field="line.accident_number"/> / <span t-field="line.date_of_visit"/></div>
 													</t>
 												</div>
 												<div class="mb-2">

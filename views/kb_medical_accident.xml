@@ -14,7 +14,6 @@
                 <field name="sex"/>
                 <field name="date_of_visit"/>
                 <field name="place_of_treatment"/>
-                <field name="type_of_disease"/>
                 <field name="accident_number"/>
                 <field name="severity"/>
             </list>
@@ -27,10 +26,8 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="record_id"/>
                         <field name="date_of_visit"/>
                         <field name="place_of_treatment"/>
-                        <field name="type_of_disease"/>
                         <field name="accident_number"/>
                         <field name="severity"/>
                         <field name="history_id" invisible="1"/>

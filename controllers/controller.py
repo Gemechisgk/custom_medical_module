@@ -23,20 +23,21 @@ class MedicalRecordPostmanAPI(Controller):
 	def _generate_medical_record_json(self, record_id):
 		# Definitions for keys and o2m relations
 		medical_record_keys = ['id', 'company_id', 'name', 'address', 'mobile', 'date_of_birth', 'id_number', 'gender', 'occupation', 'history_ids', 'history_count', 'allergy_ids', 'medical_history']
-		medical_history_keys = ['id', 'user_id', 'name', 'date', 'test_result', 'complaints', 'diagnosis', 'medical_advice', 'procedure_ids', 'drug_prescribed', 'vaccination_ids', 'treatment_ids', 'lab_tested']
+		medical_history_keys = ['id', 'user_id', 'name', 'date', 'test_result', 'complaints', 'diagnosis', 'medical_advice', 'procedure_ids', 'drug_prescribed', 'accident_ids', 'treatment_ids', 'lab_tested']
 		procedure_keys =  ['id', 'name', 'procedure']
 		vaccination_keys =  ['id', 'name', 'vaccine']
 		treatment_keys =  ['id', 'name', 'treatment']
+		accident_keys =  ['id', 'accident_number', 'date_of_visit', 'place_of_treatment', 'type_of_disease', 'severity']
 
 		medical_record_o2m = ["history_ids"]
-		medical_history_o2m = ["procedure_ids", "vaccination_ids", "treatment_ids"]
+		medical_history_o2m = ["procedure_ids", "accident_ids", "treatment_ids"]
 
 		# Generate recursively
 		data = record_id.read(medical_record_keys)[0]
 		data['history_ids'] = request.env['kb.medical.history'].sudo().browse(data['history_ids']).read(medical_history_keys)
 		for history in data['history_ids']:
 			history['procedure_ids'] = request.env['kb.medical.history.procedure'].sudo().browse(history['procedure_ids']).read(procedure_keys)
-			history['vaccination_ids'] = request.env['kb.medical.history.vaccination'].sudo().browse(history['vaccination_ids']).read(vaccination_keys)
+			history['accident_ids'] = request.env['kb.medical.history.accident'].sudo().browse(history['accident_ids']).read(accident_keys)
 			history['treatment_ids'] = request.env['kb.medical.history.treatment'].sudo().browse(history['treatment_ids']).read(treatment_keys)
 		return data
 

@@ -66,7 +66,8 @@
 								</group>
 							</page>
 							<page string="Accidents" name="accident">
-								<field name="accident_ids" nolabel="1" colspan="2" readonly="1"/>
+								<field name="accident_ids" nolabel="1" colspan="2" readonly="1"
+									views="{'tree': 'medical_history_accident_tree', 'form': 'medical_history_accident_form'}"/>
 							</page>
 							<page string="Treatments" name="treatment">
 								<group>

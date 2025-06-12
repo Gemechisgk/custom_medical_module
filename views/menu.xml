@@ -18,5 +18,9 @@
 		<!-- Configuration Menu Items -->
 		<menuitem id="medical_allergy_menu" name="List of Allergy" parent="medical_configuration_root_menu" action="custom_medical_module.medical_allergy_act" sequence="10"/>
 		<menuitem id="medical_disease_menu" name="List of Disease" parent="medical_configuration_root_menu" action="custom_medical_module.medical_disease_act" sequence="20"/>
+
+		<!-- New groups for user privilege management -->
+		<menuitem id="menu_group_medical_admin" name="Clinic Manager" parent="base.menu_users" groups="base.group_system"/>
+		<menuitem id="menu_group_medical_user" name="Clinic User" parent="base.menu_users" groups="base.group_system"/>
 	</data>
 </odoo>

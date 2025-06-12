@@ -2,7 +2,6 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 medical_record_all,medical_record_all,model_kb_medical_record,base.group_user,1,1,1,1
 medical_history_all,medical_history_all,model_kb_medical_history,base.group_user,1,1,1,1
 medical_history_procedure_all,medical_history_procedure_all,model_kb_medical_history_procedure,base.group_user,1,1,1,1
-medical_history_vaccination_all,medical_history_vaccination_all,model_kb_medical_history_vaccination,base.group_user,1,1,1,1
 medical_history_treatment_all,medical_history_treatment_all,model_kb_medical_history_treatment,base.group_user,1,1,1,1
 medical_allergy_all,medical_allergy_all,model_kb_medical_allergy,base.group_user,1,1,1,1
 medical_doctor_report_all,medical_doctor_report_all,model_kb_medical_doctor_report,base.group_user,1,0,0,0
@@ -11,4 +10,7 @@ medical_expense_all,medical_expense_all,model_kb_medical_expense,base.group_user
 medical_accident_all,medical_accident_all,model_kb_medical_accident,base.group_user,1,1,1,1
 medical_death_all,medical_death_all,model_kb_medical_death,base.group_user,1,1,1,1
 medical_disease_occurrence_all,medical_disease_occurrence_all,model_kb_medical_disease_occurrence,base.group_user,1,1,1,1
-medical_disease_all,medical_disease_all,model_kb_medical_disease,base.group_user,1,1,1,1
+medical_history_admin,medical_history_admin,model_kb_medical_history,custom_medical_module.group_medical_admin,1,1,1,1
+medical_history_user,medical_history_user,model_kb_medical_history,custom_medical_module.group_medical_user,1,0,1,0
+medical_disease_admin,medical_disease_admin,model_kb_medical_disease,custom_medical_module.group_medical_admin,1,1,1,1
+medical_disease_user,medical_disease_user,model_kb_medical_disease,custom_medical_module.group_medical_user,1,0,0,0

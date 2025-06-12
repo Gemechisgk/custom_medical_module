@@ -17,7 +17,6 @@ class MedicalHistory(models.Model):
 	medical_advice = fields.Text(string=_("Medical Advice"))
 	procedure_ids = fields.One2many("kb.medical.history.procedure", "history_id", string=_("Procedures"))
 	drug_prescribed = fields.Text(string=_("Drugs Presrcibed"))
-	vaccination_ids = fields.One2many("kb.medical.history.vaccination", "history_id", string=_("Vaccinations"))
 	treatment_ids = fields.One2many("kb.medical.history.treatment", "history_id", string=_("Treatments"))
 	lab_tested = fields.Text(string=_("Lab Tests"))
 	accident_ids = fields.One2many('kb.medical.accident', 'history_id', string=_('Accidents'))
@@ -40,19 +39,6 @@ class MedicalHistory(models.Model):
 					'default_history_id': history.id,
 				}
 			}
-
-	# def create_vaccination_histories(self):
-	#     for history in self:
-	#         return {
-	#             'type': 'ir.actions.act_window',
-	#             'name': 'Create New Vaccination History',
-	#             'res_model': 'kb.medical.history.vaccination',
-	#             'view_mode': 'form',
-	#             'target': 'new',
-	#             'context': {
-	#                 'default_history_id': history.id,
-	#             }
-	#         }
 
 	def create_treatment_histories(self):
 		for history in self:
@@ -95,22 +81,6 @@ class MedicalHistoryProcedure(models.Model):
 		for values in vals_list:
 			values['name'] = self.env['ir.sequence'].sudo().next_by_code('%s.sequence' % self._name)
 		return super(MedicalHistoryProcedure, self).create(vals_list)
-
-class MedicalHistoryVaccination(models.Model):
-	_name = "kb.medical.history.vaccination"
-	_inherit = ['mail.thread', 'mail.activity.mixin']
-	_description = _("Vaccination Histories")
-	_order = "create_date desc"
-
-	history_id = fields.Many2one("kb.medical.history", ondelete="cascade")
-	name = fields.Char(string=_("Reference"), default=_("New"), readonly=True, copy=False)
-	vaccine = fields.Char(string=_("Vaccine"), required=True)
-
-	@api.model_create_multi
-	def create(self, vals_list):
-		for values in vals_list:
-			values['name'] = self.env['ir.sequence'].sudo().next_by_code('%s.sequence' % self._name)
-		return super(MedicalHistoryVaccination, self).create(vals_list)
 
 class MedicalHistoryTreatment(models.Model):
 	_name = "kb.medical.history.treatment"

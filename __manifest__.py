@@ -23,6 +23,7 @@
     # always loaded
     'data': [
         'security/medical_doctor_report_groups.xml',
+        'security/medical_groups.xml',
         'security/ir.model.access.csv',
         'data/ir_sequence.xml',
         'data/ir_sequence_accident.xml',
