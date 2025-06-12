@@ -14,3 +14,4 @@ medical_history_admin,medical_history_admin,model_kb_medical_history,custom_medi
 medical_history_user,medical_history_user,model_kb_medical_history,custom_medical_module.group_medical_user,1,0,1,0
 medical_disease_admin,medical_disease_admin,model_kb_medical_disease,custom_medical_module.group_medical_admin,1,1,1,1
 medical_disease_user,medical_disease_user,model_kb_medical_disease,custom_medical_module.group_medical_user,1,0,0,0
+access_kb_medical_history_drug_line_user,kb.medical.history.drug.line user,model_kb_medical_history_drug_line,base.group_user,1,1,1,1

@@ -31,6 +31,7 @@
 					<field name="gender"/>
 					<field name="medical_history"/>
 					<field name="allergy_ids" widget="many2many_tags"/>
+					<field name="department_id" placeholder="Department"/>
 				</list>
 			</field>
 		</record>
@@ -86,12 +87,12 @@
 								<field name="mobile" placeholder="+251 9123456, etc..."/>
 								<field name="allergy_ids" widget="many2many_tags"/>
 								<field name="medical_history" placeholder="COVID, mild cough, etc..."/>
+								<field name="department_id" placeholder="Department"/>
 							</group>
 							<group>
 								<field name="date_of_birth" placeholder="01 January 1990, etc..."/>
 								<field name="age" readonly="1"/>
 								<field name="gender" placeholder="Male / Female"/>
-								<field name="occupation" placeholder="Salesperson, manager, etc..."/>
 							</group>
 						</group>
 						<notebook>

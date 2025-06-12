@@ -16,7 +16,7 @@ class MedicalHistory(models.Model):
 	diagnosis = fields.Text(string=_("Diagnosis"))
 	medical_advice = fields.Text(string=_("Medical Advice"))
 	procedure_ids = fields.One2many("kb.medical.history.procedure", "history_id", string=_("Procedures"))
-	drug_prescribed = fields.Text(string=_("Drugs Presrcibed"))
+	drug_line_ids = fields.One2many('kb.medical.history.drug.line', 'history_id', string=_('Drugs Prescribed'))
 	treatment_ids = fields.One2many("kb.medical.history.treatment", "history_id", string=_("Treatments"))
 	lab_tested = fields.Text(string=_("Lab Tests"))
 	accident_ids = fields.One2many('kb.medical.accident', 'history_id', string=_('Accidents'))
@@ -66,6 +66,12 @@ class MedicalHistory(models.Model):
 				}
 			}
 
+	def print_prescription(self):
+		self.ensure_one()
+		if not self.drug_line_ids or not self.drug_line_ids:
+			raise exceptions.UserError(_('No drugs selected. Please select at least one drug before printing.'))
+		return self.env.ref('custom_medical_module.action_report_prescription').report_action(self)
+
 class MedicalHistoryProcedure(models.Model):
 	_name = "kb.medical.history.procedure"
 	_inherit = ['mail.thread', 'mail.activity.mixin']
@@ -97,3 +103,14 @@ class MedicalHistoryTreatment(models.Model):
 		for values in vals_list:
 			values['name'] = self.env['ir.sequence'].sudo().next_by_code('%s.sequence' % self._name)
 		return super(MedicalHistoryTreatment, self).create(vals_list)
+
+class MedicalDrug(models.Model):
+	_name = 'kb.medical.drug'
+	_description = _('Drug')
+	name = fields.Char(string=_('Drug Name'), required=True)
+
+class MedicalHistoryDrugLine(models.Model):
+	_name = 'kb.medical.history.drug.line'
+	_description = _('Drugs Prescribed Line')
+	name = fields.Char(string=_('Drug Name'), required=True)
+	history_id = fields.Many2one('kb.medical.history', string=_('Medical History'), ondelete='cascade')

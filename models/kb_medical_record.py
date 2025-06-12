@@ -22,12 +22,12 @@ class MedicalRecord(models.Model):
 		('male', _('Male')),
 		('female', _('Female'))
 	], string=_("Gender"), required=True)
-	occupation = fields.Char(string=_("Occupation"))
 	history_ids = fields.One2many("kb.medical.history", "record_id", string=_("Medical Histories"))
 	history_count = fields.Integer(compute="_calculate_history_count")
 	allergy_ids = fields.Many2many("kb.medical.allergy", string=_("Allergies"))
 	medical_history = fields.Text(string=_("Medical History"))
 	expense_ids = fields.One2many('kb.medical.expense', 'record_id', string=_('Expenses'))
+	department_id = fields.Many2one('hr.department', string=_('Department'))
 
 	def action_redirect_to_existing(self):
 		"""Redirect to existing record"""
@@ -77,8 +77,8 @@ class MedicalRecord(models.Model):
 			self.mobile = self.employee_id.mobile_phone or self.employee_id.work_phone or ''
 			self.date_of_birth = self.employee_id.date_of_birth
 			self.gender = 'male' if self.employee_id.gender == 'male' else 'female'
-			self.occupation = self.employee_id.job_id.name if self.employee_id.job_id else ''
 			self.id_number = self.employee_id.id_number_generated or False
+			self.department_id = self.employee_id.department_id.id if self.employee_id.department_id else False
 
 	@api.model_create_multi
 	def create(self, vals_list):

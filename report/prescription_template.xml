@@ -1,0 +1,83 @@
+<odoo>
+    <template id="prescription_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div style="font-family: 'Arial', sans-serif; width: 700px; margin: auto; padding-top: 0;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <img t-if="o.record_id.company_id.logo" t-att-src="image_data_uri(o.record_id.company_id.logo)" style="height: 60px; margin-right: 16px;"/>
+                            <div style="font-size: 1.25em; font-weight: bold;">
+                                <t t-esc="o.record_id.company_id.name"/>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                            <div style="font-weight: bold;">Pad No: <span t-esc="o.name"/></div>
+                            <div style="flex: 1; text-align: center; font-size: 1.15em; font-weight: bold;">Clinic Prescription Paper</div>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Patient Name:</b> <span t-esc="o.record_id.name"/>
+                            <span style="margin-left: 10px;"><b>Age:</b> <span t-esc="o.record_id.age"/></span>
+                            <span style="margin-left: 10px;"><b>Sex:</b> <span t-esc="o.record_id.gender"/></span>
+                            <span style="margin-left: 10px;"><b>Department:</b> <span t-esc="o.record_id.department_id.name or ''"/></span>
+                            <span style="margin-left: 10px;"><b>ID No:</b> <span t-esc="o.record_id.id_number"/></span>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Diagnosis:</b> <span t-esc="o.diagnosis or ''"/>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Pharmacy Name:</b> _______________________
+                        </div>
+                        <table style="width: 100%; border: 1px solid #000; border-collapse: collapse; margin-bottom: 8px;">
+                            <tr style="font-weight: bold;">
+                                <td style="border: 1px solid #000;">Name of Drug, strength, dosage and route of administration</td>
+                                <td style="border: 1px solid #000; width: 60px;">birr</td>
+                                <td style="border: 1px solid #000; width: 60px;">cent</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="3">Rx</td>
+                            </tr>
+                            <t t-if="o.drug_line_ids">
+                                <t t-foreach="o.drug_line_ids" t-as="drug">
+                                    <tr>
+                                        <td style="border: 1px solid #000; height: 32px;"> <t t-esc="drug.name"/> </td>
+                                        <td style="border: 1px solid #000; width: 60px;"></td>
+                                        <td style="border: 1px solid #000; width: 60px;"></td>
+                                    </tr>
+                                </t>
+                            </t>
+                            <tr>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="3"></td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 24px; display: block;">
+                            <div style="display: block; width: 100%; margin-bottom: 8px;"><b>Prescriber's Name: </b><span t-esc="o.user_id.name"/></div>
+                            <div style="display: block; width: 100%; margin-bottom: 8px;">Date: <span t-esc="o.date and o.date.strftime('%Y-%m-%d') or ''"/></div>
+                            <div style="display: block; width: 100%;">Signature: ____________________</div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_prescription" model="ir.actions.report">
+        <field name="name">Prescription</field>
+        <field name="model">kb.medical.history</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_medical_module.prescription_template</field>
+        <field name="report_file">custom_medical_module.prescription_template</field>
+        <field name="binding_model_id" ref="model_kb_medical_history"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo> 

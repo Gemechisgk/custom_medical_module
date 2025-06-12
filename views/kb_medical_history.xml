@@ -16,7 +16,6 @@
 					<field name="complaints"/>
 					<field name="diagnosis"/>
 					<field name="medical_advice"/>
-					<field name="drug_prescribed"/>
 					<field name="lab_tested"/>
 				</list>
 			</field>
@@ -44,6 +43,7 @@
                                     <span class="o_stat_text">New Treatment</span>
                                 </div>
                             </button>
+                            <button name="print_prescription" string="Print Prescription" type="object" class="btn btn-success" style="background-color: #28a745; color: #fff; border: none;" invisible="not drug_line_ids"/>
                         </div>
 						<group>
 							<group>
@@ -54,7 +54,11 @@
 							</group>
 							<group>
 								<field name="medical_advice" placeholder="Take medicine, rest, etc..."/>
-								<field name="drug_prescribed" placeholder="Paracetamol, antibiotic, etc..."/>
+								<field name="drug_line_ids">
+									<list editable="bottom">
+										<field name="name" string="Drug Name"/>
+									</list>
+								</field>
 								<field name="lab_tested" placeholder="Full blood work, etc..."/>
 								<field name="user_id" invisible="1"/>
 							</group>
@@ -78,6 +82,16 @@
 					</sheet>
 					<chatter/>
 				</form>
+			</field>
+		</record>
+
+		<record id="medical_history_drug_line_list" model="ir.ui.view">
+			<field name="name">medical_history_drug_line_list</field>
+			<field name="model">kb.medical.history.drug.line</field>
+			<field name="arch" type="xml">
+				<list editable="bottom">
+					<field name="name" string="Drug Name"/>
+				</list>
 			</field>
 		</record>
 	</data>
