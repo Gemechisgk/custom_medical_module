@@ -63,13 +63,16 @@
 			<field name="arch" type="xml">
 				<form>
 					<sheet>
+						<div invisible="not patient_dead" style="position: absolute; top: 0; right: 0; z-index: 10;">
+							<span style="background: #d9534f; color: #fff; padding: 8px 24px; font-size: 1.2em; font-weight: bold; border-radius: 0 0 0 16px;">DEAD</span>
+						</div>
 						<div class="oe_button_box" name="button_box">
 							<button name="view_medical_histories" type="object" icon="fa-list" help="View all medical histories related to this record" class="oe_stat_button">
 								<div class="o_field_widget o_stat_info">
 									<field string="Histories" name="history_count" widget="statinfo"/>
 								</div>
 							</button>
-							<button name="create_medical_histories" type="object" icon="fa-plus-square" help="Create a new medical history for this record" class="oe_stat_button">
+							<button name="create_medical_histories" type="object" icon="fa-plus-square" help="Create a new medical history for this record" class="oe_stat_button" invisible="patient_dead">
 								<div class="o_field_widget o_stat_info">
 									<span class="o_stat_text">New History</span>
 								</div>
@@ -93,6 +96,7 @@
 								<field name="date_of_birth" placeholder="01 January 1990, etc..."/>
 								<field name="age" readonly="1"/>
 								<field name="gender" placeholder="Male / Female"/>
+								<field name="patient_dead"/>
 							</group>
 						</group>
 						<notebook>

@@ -28,6 +28,7 @@ class MedicalRecord(models.Model):
 	medical_history = fields.Text(string=_("Medical History"))
 	expense_ids = fields.One2many('kb.medical.expense', 'record_id', string=_('Expenses'))
 	department_id = fields.Many2one('hr.department', string=_('Department'))
+	patient_dead = fields.Boolean(string=_('Patient Dead'), default=False)
 
 	def action_redirect_to_existing(self):
 		"""Redirect to existing record"""
@@ -103,18 +104,19 @@ class MedicalRecord(models.Model):
 		return super(MedicalRecord, self).create(vals_list)
 
 	def write(self, vals):
-		if vals.get('employee_id'):
-			# Check if changing employee_id would create a duplicate
-			for record in self:
-				duplicate = self.search([
-					('employee_id', '=', vals['employee_id']),
-					('id', '!=', record.id),
-					('company_id', '=', vals.get('company_id', record.company_id.id))
-				])
-				if duplicate:
-					raise exceptions.ValidationError(_('Cannot update to employee %s as they already have a medical record!') % 
-						self.env['hr.employee'].browse(vals['employee_id']).name)
-		return super(MedicalRecord, self).write(vals)
+		res = super(MedicalRecord, self).write(vals)
+		for record in self:
+			if vals.get('patient_dead') and record.patient_dead:
+				death_model = self.env['kb.medical.death']
+				existing = death_model.search([('record_id', '=', record.id)], limit=1)
+				if not existing:
+					death_model.create({
+						'record_id': record.id,
+						'employee_name': record.name,
+						'cause_of_death': '',
+						'date_of_expiry': fields.Date.today(),
+					})
+		return res
 
 	@api.depends("history_ids")
 	def _calculate_history_count(self):
@@ -179,3 +181,11 @@ class MedicalRecord(models.Model):
 				('id_number', operator, name)
 			]
 		return self.search(domain + args, limit=limit).name_get()
+
+	@api.constrains('patient_dead')
+	def _prohibit_new_history_if_dead(self):
+		for record in self:
+			if record.patient_dead and record.history_ids:
+				for history in record.history_ids:
+					if self.env.context.get('default_record_id') == record.id:
+						raise exceptions.ValidationError(_('Cannot add new history for a deceased patient.'))

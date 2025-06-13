@@ -4,6 +4,8 @@
 			<field name="name">Medical Records</field>
 			<field name="res_model">kb.medical.history</field>
 			<field name="view_mode">list,form</field>
+			<field name="context">{'search_default_filter_alive': 1}</field>
+			<field name="domain">[('record_id.patient_dead', '=', False)]</field>
 		</record>
 
 		<record id="medical_history_tree" model="ir.ui.view">

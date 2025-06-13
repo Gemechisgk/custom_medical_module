@@ -3,6 +3,7 @@
         <field name="name">Medical Deaths</field>
         <field name="res_model">kb.medical.death</field>
         <field name="view_mode">list,form</field>
+        <field name="domain">[("record_id.patient_dead", "=", True)]</field>
     </record>
     <record id="medical_death_tree" model="ir.ui.view">
         <field name="name">medical_death_tree</field>
