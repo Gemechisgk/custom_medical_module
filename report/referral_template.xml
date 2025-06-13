@@ -12,7 +12,7 @@
                         </div>
                         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
                             <div style="font-weight: bold;">Pad No: <span t-esc="o.name"/></div>
-                            <div style="flex: 1; text-align: center; font-size: 1.15em; font-weight: bold;">National Transport patient referral format</div>
+                            <div style="flex: 1; text-align: center; font-size: 1.15em; font-weight: bold;">Patient referral format</div>
                             
                         </div>
                         <div style="margin-bottom: 8px;">
