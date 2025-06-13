@@ -29,6 +29,8 @@ class MedicalRecord(models.Model):
 	expense_ids = fields.One2many('kb.medical.expense', 'record_id', string=_('Expenses'))
 	department_id = fields.Many2one('hr.department', string=_('Department'))
 	patient_dead = fields.Boolean(string=_('Patient Dead'), default=False)
+	cause_of_death = fields.Char(string=_('Cause of Death'))
+	date_of_death = fields.Datetime(string=_('Date and Time of Death'))
 
 	def action_redirect_to_existing(self):
 		"""Redirect to existing record"""
@@ -181,6 +183,13 @@ class MedicalRecord(models.Model):
 				('id_number', operator, name)
 			]
 		return self.search(domain + args, limit=limit).name_get()
+
+	@api.constrains('patient_dead', 'cause_of_death', 'date_of_death')
+	def _check_death_fields_required(self):
+		for record in self:
+			if record.patient_dead:
+				if not record.cause_of_death or not record.date_of_death:
+					raise exceptions.ValidationError(_('Cause of Death and Date and Time of Death are required when Patient Dead is checked.'))
 
 	@api.constrains('patient_dead')
 	def _prohibit_new_history_if_dead(self):

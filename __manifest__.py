@@ -35,6 +35,7 @@
         'views/kb_medical_doctor_report_views.xml',
         'report/kb_medical_record.xml',
         'report/prescription_template.xml',
+        'report/referral_template.xml',
         'views/kb_medical_record.xml',
         'views/kb_medical_allergy.xml',
         'views/kb_medical_disease.xml',

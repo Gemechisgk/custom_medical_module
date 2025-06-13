@@ -46,6 +46,7 @@
                                 </div>
                             </button>
                             <button name="print_prescription" string="Print Prescription" type="object" class="btn btn-success" style="background-color: #28a745; color: #fff; border: none;" invisible="not drug_line_ids"/>
+                            <button name="refer_patient" string="Refer Patient" type="object" class="btn btn-primary" style="background-color: #007bff; color: #fff; border: none; margin-left: 8px;"/>
                         </div>
 						<group>
 							<group>

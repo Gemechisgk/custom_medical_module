@@ -1,0 +1,87 @@
+<odoo>
+    <template id="referral_template">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div style="font-family: 'Arial', sans-serif; width: 900px; margin: auto; padding-top: 0;">
+                        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <img t-if="o.record_id.company_id.logo" t-att-src="image_data_uri(o.record_id.company_id.logo)" style="height: 60px; margin-right: 16px;"/>
+                            <div style="font-size: 1.25em; font-weight: bold;">
+                                <t t-esc="o.record_id.company_id.name"/>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                            <div style="font-weight: bold;">Pad No: <span t-esc="o.name"/></div>
+                            <div style="flex: 1; text-align: center; font-size: 1.15em; font-weight: bold;">National Transport patient referral format</div>
+                            
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Patient Name:</b> <span t-esc="o.record_id.name"/>
+                            <span style="margin-left: 20px;"><b>Age:</b> <span t-esc="o.record_id.age"/></span>
+                            <span style="margin-left: 20px;"><b>Sex:</b> <span t-esc="o.record_id.gender"/></span>
+                            <span style="margin-left: 20px;"><b>ID No:</b> <span t-esc="o.record_id.id_number"/></span>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Department:</b> <span t-esc="o.record_id.department_id.name or ''"/>
+                            <span style="margin-left: 20px;"><b>Receiving Hospital:</b> _________________________</span>
+                        </div>
+                        <div style="margin-bottom: 8px;"><b>Chief compliant</b> <span t-esc="o.complaints or ''"/></div>
+                        <div style="margin-bottom: 8px;"><b>Condition of the patient</b>:
+                            <span style="margin-left: 10px;">Critical <input type="checkbox"/></span>
+                            <span style="margin-left: 10px;">Emergency <input type="checkbox"/></span>
+                            <span style="margin-left: 10px;">Stable <input type="checkbox"/></span>
+                        </div>
+                        <div style="margin-bottom: 8px;"><b>Findings</b> BP __________ PR __________ Temp __________ O2 sat __________</div>
+                        <div style="margin-bottom: 8px;"><b>Impression:</b> <span t-esc="o.diagnosis or ''"/></div>
+                        <div style="margin-bottom: 8px;"><b>Mx. Or Rx. Given</b> <span t-esc="o.medical_advice or ''"/></div>
+                        <div style="margin-bottom: 8px;"><b>Reason for referral</b> ____________________________________________</div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Clinician's signature</b> ____________________ <span style="margin-left: 40px;"></span>
+                            <b>HR's signature</b> ____________________
+                        </div>
+                        <hr style="margin: 24px 0; border: 1px solid #000;"/>
+                        <div style="font-weight: bold; margin-bottom: 8px;">Feedback</div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Patient Name:</b> <span t-esc="o.record_id.name"/>
+                            <span style="margin-left: 20px;"><b>Age:</b> <span t-esc="o.record_id.age"/></span>
+                            <span style="margin-left: 20px;"><b>Sex:</b> <span t-esc="o.record_id.gender"/></span>
+                            <span style="margin-left: 20px;"><b>ID No:</b> <span t-esc="o.record_id.id_number"/></span>
+                            <span style="margin-left: 20px;"><b>Card No:</b> __________</span>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Arrival date</b> __________ <b>time</b> __________
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Condition of patient on arrival</b>:
+                            <span style="margin-left: 10px;">Critical <input type="checkbox"/></span>
+                            <span style="margin-left: 10px;">Emergency <input type="checkbox"/></span>
+                            <span style="margin-left: 10px;">Stable <input type="checkbox"/></span>
+                            <span style="margin-left: 10px;">No sign of life (Dead) <input type="checkbox"/></span>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Diagnosis</b>:
+                            <span style="margin-left: 10px;">the Same <input type="checkbox"/></span>
+                            <span style="margin-left: 10px;">Different <input type="checkbox"/></span>
+                            if different, New Dx __________
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Comment of Receiving physician</b> ____________________________________________________________________________________________
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <b>Name</b> ____________________ <b>Specialty</b> ____________________ <b>Cellphone</b> ____________________
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_referral" model="ir.actions.report">
+        <field name="name">Patient Referral</field>
+        <field name="model">kb.medical.history</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">custom_medical_module.referral_template</field>
+        <field name="report_file">custom_medical_module.referral_template</field>
+        <field name="binding_model_id" ref="model_kb_medical_history"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo> 

@@ -97,6 +97,8 @@
 								<field name="age" readonly="1"/>
 								<field name="gender" placeholder="Male / Female"/>
 								<field name="patient_dead"/>
+								<field name="cause_of_death" invisible="not patient_dead" placeholder="Cause of death" required="1"/>
+								<field name="date_of_death" invisible="not patient_dead" widget="datetime" placeholder="Date and time of death" string="Date and Time of Death" required="1"/>
 							</group>
 						</group>
 						<notebook>

@@ -72,6 +72,10 @@ class MedicalHistory(models.Model):
 			raise exceptions.UserError(_('No drugs selected. Please select at least one drug before printing.'))
 		return self.env.ref('custom_medical_module.action_report_prescription').report_action(self)
 
+	def refer_patient(self):
+		self.ensure_one()
+		return self.env.ref('custom_medical_module.action_report_referral').report_action(self)
+
 class MedicalHistoryProcedure(models.Model):
 	_name = "kb.medical.history.procedure"
 	_inherit = ['mail.thread', 'mail.activity.mixin']
