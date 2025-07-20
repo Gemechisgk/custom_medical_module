@@ -117,4 +117,5 @@ class MedicalHistoryDrugLine(models.Model):
 	_name = 'kb.medical.history.drug.line'
 	_description = _('Drugs Prescribed Line')
 	name = fields.Char(string=_('Drug Name'), required=True)
+	dosage = fields.Char(string=_('Dosage'), required=True)
 	history_id = fields.Many2one('kb.medical.history', string=_('Medical History'), ondelete='cascade')

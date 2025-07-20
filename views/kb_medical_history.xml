@@ -60,6 +60,7 @@
 								<field name="drug_line_ids">
 									<list editable="bottom">
 										<field name="name" string="Drug Name"/>
+										<field name="dosage" string="Dosage"/>
 									</list>
 								</field>
 								<field name="lab_tested" placeholder="Full blood work, etc..."/>
@@ -94,6 +95,7 @@
 			<field name="arch" type="xml">
 				<list editable="bottom">
 					<field name="name" string="Drug Name"/>
+					<field name="dosage" string="Dosage"/>
 				</list>
 			</field>
 		</record>

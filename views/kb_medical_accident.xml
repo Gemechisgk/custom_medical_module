@@ -9,7 +9,7 @@
         <field name="model">kb.medical.accident</field>
         <field name="type">list</field>
         <field name="arch" type="xml">
-            <list>
+            <list create="false">
                 <field name="employee_name"/>
                 <field name="sex"/>
                 <field name="date_of_visit"/>

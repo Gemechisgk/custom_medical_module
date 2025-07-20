@@ -29,17 +29,19 @@
                         </div>
                         <table style="width: 100%; border: 1px solid #000; border-collapse: collapse; margin-bottom: 8px;">
                             <tr style="font-weight: bold;">
-                                <td style="border: 1px solid #000;">Name of Drug, strength, dosage and route of administration</td>
+                                <td style="border: 1px solid #000;">Name of Drug</td>
+                                <td style="border: 1px solid #000;">Dosage</td>
                                 <td style="border: 1px solid #000; width: 60px;">birr</td>
                                 <td style="border: 1px solid #000; width: 60px;">cent</td>
                             </tr>
                             <tr>
-                                <td style="border: 1px solid #000; height: 32px;" colspan="3">Rx</td>
+                                <td style="border: 1px solid #000; height: 32px;" colspan="4">Rx</td>
                             </tr>
                             <t t-if="o.drug_line_ids">
                                 <t t-foreach="o.drug_line_ids" t-as="drug">
                                     <tr>
-                                        <td style="border: 1px solid #000; height: 32px;"> <t t-esc="drug.name"/> </td>
+                                        <td style="border: 1px solid #000; height: 32px;"><t t-esc="drug.name"/></td>
+                                        <td style="border: 1px solid #000; height: 32px;"><t t-esc="drug.dosage"/></td>
                                         <td style="border: 1px solid #000; width: 60px;"></td>
                                         <td style="border: 1px solid #000; width: 60px;"></td>
                                     </tr>

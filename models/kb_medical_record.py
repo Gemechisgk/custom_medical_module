@@ -78,9 +78,11 @@ class MedicalRecord(models.Model):
 			self.name = self.employee_id.name
 			self.address = self.employee_id.address_id.street if self.employee_id.address_id else ''
 			self.mobile = self.employee_id.mobile_phone or self.employee_id.work_phone or ''
-			self.date_of_birth = self.employee_id.date_of_birth
+			# Use date_of_birth_ec if available, otherwise fallback to date_of_birth
+			self.date_of_birth = self.employee_id.date_of_birth_ec or self.employee_id.date_of_birth
 			self.gender = 'male' if self.employee_id.gender == 'male' else 'female'
-			self.id_number = self.employee_id.id_number_generated or False
+			# Use identification_id if available, otherwise fallback to id_number_generated
+			self.id_number = self.employee_id.identification_id or self.employee_id.id_number_generated or False
 			self.department_id = self.employee_id.department_id.id if self.employee_id.department_id else False
 
 	@api.model_create_multi
@@ -115,8 +117,8 @@ class MedicalRecord(models.Model):
 					death_model.create({
 						'record_id': record.id,
 						'employee_name': record.name,
-						'cause_of_death': '',
-						'date_of_expiry': fields.Date.today(),
+						'cause_of_death': record.cause_of_death,
+						'date_of_expiry': record.date_of_death,
 					})
 		return res
 

@@ -4,6 +4,7 @@ class DoctorReport(models.Model):
     _name = 'kb.medical.doctor.report'
     _description = _('Doctor Report')
     _auto = False
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     doctor_id = fields.Many2one('res.users', string=_('Doctor'), readonly=True)
     doctor_name = fields.Char(string=_('Doctor Name'), readonly=True)
