@@ -88,7 +88,7 @@
 								<field name="id_number" placeholder="NTS-1234"/>
 								<field name="address" placeholder="Dire Dawa, etc..."/>
 								<field name="mobile" placeholder="+251 9123456, etc..."/>
-								<field name="allergy_ids" widget="many2many_tags"/>
+								<field name="allergy_ids" widget="many2many_tags" options="{'no_create': True}"/>
 								<field name="medical_history" placeholder="COVID, mild cough, etc..."/>
 								<field name="department_id" placeholder="Department"/>
 							</group>

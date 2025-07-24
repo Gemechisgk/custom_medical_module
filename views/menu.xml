@@ -1,23 +1,22 @@
 <odoo>
 	<data>
 		<!-- Root Menu -->
-		<menuitem id="medical_root_menu" name="Medical" 
-              web_icon="custom_medical_module,static/description/icon.png"/>
+		<menuitem id="medical_root_menu" name="Medical" web_icon="custom_medical_module,static/description/icon.png" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user,custom_medical_module.group_medical_doctor_report_manager"/>
 
 		<!-- Configuration Menu -->
-		<menuitem id="medical_configuration_root_menu" name="Configuration" parent="medical_root_menu" sequence="300"/>
+		<menuitem id="medical_configuration_root_menu" name="Configuration" parent="medical_root_menu" sequence="300" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user"/>
 
 		<!-- Main Menu Items -->
-		<menuitem id="medical_record_menu" name="Medical Records" parent="medical_root_menu" action="custom_medical_module.medical_record_act" sequence="10"/>
+		<menuitem id="medical_record_menu" name="Medical Records" parent="medical_root_menu" action="custom_medical_module.medical_record_act" sequence="10" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user"/>
 		<menuitem id="menu_doctor_report" name="Doctor Report" parent="medical_root_menu" action="custom_medical_module.action_doctor_report" sequence="20" groups="custom_medical_module.group_medical_doctor_report_manager"/>
-		<menuitem id="medical_expense_menu" name="Medical Expenses" parent="medical_root_menu" action="custom_medical_module.medical_expense_act" sequence="30"/>
-		<menuitem id="medical_accident_menu" name="Medical Accidents" parent="medical_root_menu" action="custom_medical_module.medical_accident_act" sequence="40"/>
-		<menuitem id="medical_death_menu" name="Medical Deaths" parent="medical_root_menu" action="custom_medical_module.medical_death_act" sequence="50"/>
-		<menuitem id="medical_disease_occurrence_menu" name="Disease Occurrences" parent="medical_root_menu" action="custom_medical_module.medical_disease_occurrence_act" sequence="60"/>
+		<menuitem id="medical_expense_menu" name="Medical Expenses" parent="medical_root_menu" action="custom_medical_module.medical_expense_act" sequence="30" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user"/>
+		<menuitem id="medical_accident_menu" name="Medical Accidents" parent="medical_root_menu" action="custom_medical_module.medical_accident_act" sequence="40" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user"/>
+		<menuitem id="medical_death_menu" name="Medical Deaths" parent="medical_root_menu" action="custom_medical_module.medical_death_act" sequence="50" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user"/>
+		<menuitem id="medical_disease_occurrence_menu" name="Disease Occurrences" parent="medical_root_menu" action="custom_medical_module.medical_disease_occurrence_act" sequence="60" groups="custom_medical_module.group_medical_admin,custom_medical_module.group_medical_user"/>
 
 		<!-- Configuration Menu Items -->
-		<menuitem id="medical_allergy_menu" name="List of Allergy" parent="medical_configuration_root_menu" action="custom_medical_module.medical_allergy_act" sequence="10"/>
-		<menuitem id="medical_disease_menu" name="List of Disease" parent="medical_configuration_root_menu" action="custom_medical_module.medical_disease_act" sequence="20"/>
+		<menuitem id="medical_allergy_menu" name="List of Allergy" parent="medical_configuration_root_menu" action="custom_medical_module.medical_allergy_act" sequence="10" groups="custom_medical_module.group_medical_admin"/>
+		<menuitem id="medical_disease_menu" name="List of Disease" parent="medical_configuration_root_menu" action="custom_medical_module.medical_disease_act" sequence="20" groups="custom_medical_module.group_medical_admin"/>
 
 		<!-- New groups for user privilege management -->
 		<menuitem id="menu_group_medical_admin" name="Clinic Manager" parent="base.menu_users" groups="base.group_system"/>

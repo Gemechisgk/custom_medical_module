@@ -1,0 +1,7 @@
+<odoo>
+    <record id="module_category_medical" model="ir.module.category">
+        <field name="name">Medical</field>
+        <field name="sequence">20</field>
+        <field name="description">Access rights for the Medical Records module</field>
+    </record>
+</odoo> 
