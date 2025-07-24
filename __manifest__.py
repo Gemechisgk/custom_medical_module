@@ -22,6 +22,7 @@
 
     # always loaded
     'data': [
+        'data/module_category.xml',
         'security/medical_doctor_report_groups.xml',
         'security/medical_groups.xml',
         'security/ir.model.access.csv',
